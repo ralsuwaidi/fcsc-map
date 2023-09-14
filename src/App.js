@@ -30,7 +30,7 @@ function App() {
         </form>
       </div>
 
-      <div className="absolute left-4 top-14 bg-white rounded">
+      <div className="absolute left-4 top-16 bg-white rounded">
         <Button className='bg-white' size={'sm'} onClick={handleButtonClick}>
           <BiWorld className=" text-black h-4 w-4" />
         </Button>
@@ -48,7 +48,7 @@ function App() {
 
           {buttonList.map((button) => (
             <div key={button} >
-              <p className="p-1 bg-white shadow-lg font-semibold mt-2 rounded w-fit">{button}</p>
+              <p className="p-1 bg-white text-sm shadow-lg font-semibold mt-2 rounded w-fit">{button}</p>
             </div>
           ))}
 
