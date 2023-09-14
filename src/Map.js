@@ -19,7 +19,7 @@ const Map = () => {
   useEffect(() => {
     const map = new mapboxgl.Map({
       container: mapContainerRef.current,
-      style: 'mapbox://styles/mapbox/light-v11',
+      style: 'mapbox://styles/mapbox/streets-v12',
       center: [55, 25.3],
       zoom: 7,
     });
@@ -60,9 +60,11 @@ const Map = () => {
           'circle-color': [
             'step',
             ['get', 'point_count'],
-            '#f2f2f2', // light gray for clusters with less than 100 points
-            100, '#d9d9d9', // medium gray for clusters with 100-750 points
-            750, '#808080' // dark gray for clusters with more than 750 points
+            '#51bbd6',
+            100,
+            '#f1f075',
+            750,
+            '#f28cb1'
           ],
           'circle-radius': [
             'step',
