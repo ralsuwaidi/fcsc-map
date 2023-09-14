@@ -15,7 +15,6 @@ mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_TOKEN
 const Map = () => {
   const mapContainerRef = useRef(null);
 
-
   // Initialize map when component mounts
   useEffect(() => {
     const map = new mapboxgl.Map({
@@ -29,8 +28,6 @@ const Map = () => {
     const types = {
       'Hotel': hotelicon,
       'Religious Facilities': mosqueicon,
-      // 'second': 'phone-call.png',
-      // 'third': 'third.png',
     };
 
     const loadImages = async () => {
@@ -105,10 +102,6 @@ const Map = () => {
       });
 
     });
-
-
-    // Add navigation control (the +/- zoom buttons)
-    map.addControl(new mapboxgl.NavigationControl(), 'top-right');
 
     // Clean up on unmount
     return () => map.remove();

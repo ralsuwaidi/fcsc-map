@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Map from "./Map";
 import Sidebar from "./components/Sidebar";
 import { Button } from 'flowbite-react';
-import { HiShoppingCart } from 'react-icons/hi';
 import { BiWorld } from 'react-icons/bi';
 import { BsFillDoorOpenFill } from 'react-icons/bs';
 import { FaMoneyBillAlt } from 'react-icons/fa';
@@ -26,8 +25,14 @@ function App() {
       <Map />
 
 
+      <div className='absolute top-0 bg-white w-screen h-12'>
+        <form>
+          <input type="text" id="first_name" class=" text-gray-900 border-none text-center  w-full p-2.5  dark:text-white" placeholder="Search" rquired />
+        </form>
 
-      <div className="absolute left-4 top-4 bg-white rounded">
+      </div>
+
+      <div className="absolute left-4 top-14 bg-white rounded">
         <Button className='bg-white' size={'sm'} onClick={handleButtonClick}>
           <BiWorld className=" text-black h-4 w-4" />
         </Button>
