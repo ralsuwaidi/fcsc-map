@@ -39,7 +39,7 @@ function App() {
 
           {buttonList.map((button) => (
             <div key={button} >
-              <p className="p-1 bg-white shadow-lg font-semibold mt-2 rounded-md">{button}</p>
+              <p className="p-1 bg-white shadow-lg font-semibold mt-2 rounded-md w-fit">{button}</p>
             </div>
           ))}
 
