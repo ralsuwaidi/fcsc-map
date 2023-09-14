@@ -14,13 +14,22 @@ const buttonList = [
   'Entertainment',
 ]
 
-
-
 function App() {
   const [isSidebarVisible, SidebarVisible] = useState(false);
-  const [sideBarTab, setSideBarTabs] = useState(0);
-  const handleButtonClick = () => {
+  const [tabNumber, setTabNumber] = useState(0);
+  const handleButtonClick1 = () => {
     SidebarVisible(!isSidebarVisible);
+    setTabNumber(0)
+  }
+
+  const handleButtonClick2 = () => {
+    SidebarVisible(!isSidebarVisible);
+    setTabNumber(1)
+  }
+
+  const handleButtonClick3 = () => {
+    SidebarVisible(!isSidebarVisible);
+    setTabNumber(2)
   }
 
   return (
@@ -33,31 +42,22 @@ function App() {
         </form>
       </div>
 
-
       <div className="absolute left-4 top-16 bg-white rounded" >
-        <Button className='bg-white' size={'sm'} onClick={handleButtonClick}>
+        <Button className='bg-white' size={'sm'} onClick={handleButtonClick1}>
           <BiWorld className=" text-black h-4 w-4" />
         </Button>
-        <Button className='bg-white' size={'sm'} onClick={handleButtonClick}>
+        <Button className='bg-white' size={'sm'} onClick={handleButtonClick2}>
           <BsFillDoorOpenFill className=" text-black h-4 w-4" />
         </Button>
-        <Button className='bg-white' size={'sm'} onClick={handleButtonClick}>
+        <Button className='bg-white' size={'sm'} onClick={handleButtonClick3}>
           <FaMoneyBillAlt className=" text-black h-4 w-4" />
         </Button>
       </div>
-      {/* 
-      <div className="absolute top-16 left-20 rounded p-3 bg-white w-[60vw] max-h-60" >
-        <div className="flex justify-between">
-          <p className="font-semibold text-lg">Title</p>
-        </div>
-      </div> */}
 
 
       {isSidebarVisible &&
-        GetSidebar(1)
+        GetSidebar(tabNumber)
       }
-
-
 
       <div className="absolute left-4 bottom-4">
         <div className="relative">
@@ -73,9 +73,6 @@ function App() {
     </div>
   );
 }
-
-
-
 
 
 export default App;
