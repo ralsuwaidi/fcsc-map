@@ -100,6 +100,7 @@ const Map = () => {
         layout: {
           'icon-image': ['get', 'Type'],
           'icon-allow-overlap': true,
+          'icon-size': 0.7,
         },
       });
 
