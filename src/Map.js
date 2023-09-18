@@ -1,12 +1,9 @@
 import mapboxgl from 'mapbox-gl';
 import React, { useEffect, useRef } from 'react';
-import { createRoot } from 'react-dom/client';
 import geoJson from './data.json';
 import './Map.css';
-import Marker from './components/Marker';
 import hotelicon from './assets/icons/hotel.png'
 import mosqueicon from './assets/icons/mosque.png'
-
 
 
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_TOKEN

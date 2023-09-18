@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Map from "./Map";
 import { GetSidebar } from "./components/Sidebar";
-import { Button, Sidebar } from 'flowbite-react';
+import { Button } from 'flowbite-react';
 import { BiWorld } from 'react-icons/bi';
 import { BsFillDoorOpenFill } from 'react-icons/bs';
 import { FaMoneyBillAlt } from 'react-icons/fa';
@@ -60,12 +60,14 @@ function App() {
         GetSidebar(tabNumber)
       }
 
-      <div className="absolute left-4 bottom-4 z-20">
+      <div className="absolute right-4 bottom-4 z-20 text-right">
         <div className="relative">
 
           {buttonList.map((button) => (
             <div key={button} >
-              <p className="p-1 bg-white text-sm shadow-lg font-semibold mt-2 rounded w-fit">{button}</p>
+              <button onClick={handleButtonClick1}>
+                <p className="p-1 bg-white text-sm shadow-lg font-semibold mt-2 rounded w-fit">{button}</p>
+              </button>
             </div>
           ))}
 
