@@ -17,6 +17,9 @@ const buttonList = [
 function App() {
   const [isSidebarVisible, SidebarVisible] = useState(false);
   const [tabNumber, setTabNumber] = useState(0);
+  const [filter, setFilter] = useState(null);
+
+
   const handleButtonClick1 = () => {
     SidebarVisible(!isSidebarVisible);
     setTabNumber(0)
@@ -32,9 +35,13 @@ function App() {
     setTabNumber(2)
   }
 
+  const handleFilterClick = () => {
+    setFilter('Hotel')
+  }
+
   return (
     <div className="h-full w-full">
-      <Map />
+      <Map filter={filter} />
 
       <div className='absolute top-0 bg-white w-screen h-12'>
         <form>
@@ -64,7 +71,7 @@ function App() {
 
           {buttonList.map((button) => (
             <div key={button} >
-              <button onClick={handleButtonClick1}>
+              <button onClick={handleFilterClick}>
                 <p className="p-1 bg-white text-sm shadow-lg font-semibold mt-2 rounded w-fit">{button}</p>
               </button>
             </div>

@@ -1,7 +1,13 @@
+import mapboxgl from "mapbox-gl";
+
+/**
+ * Function to add map layers
+ * @param {mapboxgl.Map} map - The Mapbox map instance
+ */
+function AddMapLayers(map, filterValue) {
 
 
 
-function AddMapLayers(map) {
     map.addLayer({
         id: 'clusters',
         type: 'circle',
@@ -46,7 +52,7 @@ function AddMapLayers(map) {
         id: 'unclustered-point',
         type: 'symbol',
         source: 'chicago-parks',
-        filter: ['!', ['has', 'point_count']],
+        filter: filterValue ? ['all', ['!', ['has', 'point_count']], ['==', ['get', 'Type'], filterValue]] : ['!', ['has', 'point_count']],
         layout: {
             'icon-image': ['get', 'Type'],
             'icon-allow-overlap': true,
