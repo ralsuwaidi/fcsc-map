@@ -62,14 +62,19 @@ function App() {
 
 
 
-  const handleFilterClick = (category) => {
+  const handleFilterClick = (items) => {
     // Find the specific category object in buttonList
-    const categoryObj = buttonList.find(list => list.category === category);
+    // const categoryObj = buttonList.find(list => list.category === category);
+
+
+
 
     // If a category object is found, set the filter to its items
-    if (categoryObj) {
-      console.log(categoryObj.items);
-      setFilter(categoryObj.items);
+    if (items != filter) {
+      console.log(items);
+      setFilter(items);
+    } else {
+      setFilter(null)
     }
   };
 
@@ -105,13 +110,29 @@ function App() {
 
           {buttonList
             .filter(filterList => filterList.items.length > 0)
-            .map((filterList) => (
-              <div key={filterList.category} >
-                <button onClick={() => handleFilterClick(filterList.category)}>
-                  <p className="p-1 bg-white text-sm shadow-lg font-semibold mt-2 rounded w-fit">{filterList.category}</p>
-                </button>
-              </div>
-            ))}
+            .map((filterList) => {
+              // Create a boolean check to see if the filterList matches the current filter
+              const isActive = filter && JSON.stringify(filterList.items.sort()) === JSON.stringify(filter.sort());
+
+              return (
+                <div key={filterList.category} >
+                  <button onClick={() => handleFilterClick(filterList.items)}>
+                    <p className={`
+                      p-1 
+                      text-sm 
+                      shadow-lg 
+                      font-semibold 
+                      mt-2 
+                      rounded 
+                      w-fit 
+                      ${isActive ? 'bg-orange-400 text-white' : 'bg-white text-black'}
+                    `}>
+                      {filterList.category}
+                    </p>
+                  </button>
+                </div>
+              )
+            })}
 
         </div>
       </div>
