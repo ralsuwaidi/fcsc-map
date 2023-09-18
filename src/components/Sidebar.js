@@ -102,7 +102,7 @@ export default function Sidebar(props) {
 export function GetSidebar(tabNumber) {
     if (tabNumber == 0) {
         return (
-            <Sidebar title="Basic Facts About the UAE1">
+            <Sidebar title="Emirates of the UAE">
                 {emiratesList.map((data) => (
                     <div class="max-w-sm mt-2 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                         <img class="rounded-t-lg" src={data.image} alt="" />
@@ -116,7 +116,7 @@ export function GetSidebar(tabNumber) {
         )
     } else if (tabNumber == 1) {
         return (
-            <Sidebar title="Basic Facts About the UAE2">
+            <Sidebar title="Basic Facts About the UAE">
                 <div className="grid-cols-2 grid gap-2">
                     {statList.map((stat) => (
                         <div className=" w-28 bg-gray-100 rounded-lg p-1">

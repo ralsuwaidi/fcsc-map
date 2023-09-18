@@ -42,7 +42,7 @@ function App() {
         </form>
       </div>
 
-      <div className="absolute left-4 top-16 bg-white rounded" >
+      <div className="absolute left-4 top-16 bg-white rounded shadow-lg" >
         <Button className='bg-white' size={'sm'} onClick={handleButtonClick1}>
           <BiWorld className=" text-black h-4 w-4" />
         </Button>
@@ -59,7 +59,7 @@ function App() {
         GetSidebar(tabNumber)
       }
 
-      <div className="absolute left-4 bottom-4">
+      <div className="absolute left-4 bottom-4 z-20">
         <div className="relative">
 
           {buttonList.map((button) => (
