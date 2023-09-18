@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Map from "./Map";
-import Sidebar, { GetSidebar } from "./components/Sidebar";
-import { Button } from 'flowbite-react';
+import { GetSidebar } from "./components/Sidebar";
+import { Button, Sidebar } from 'flowbite-react';
 import { BiWorld } from 'react-icons/bi';
 import { BsFillDoorOpenFill } from 'react-icons/bs';
 import { FaMoneyBillAlt } from 'react-icons/fa';
@@ -35,6 +35,7 @@ function App() {
   return (
     <div className="h-full w-full">
       <Map />
+
 
       <div className='absolute top-0 bg-white w-screen h-12'>
         <form>
