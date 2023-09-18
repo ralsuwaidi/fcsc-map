@@ -7,11 +7,36 @@ import { BsFillDoorOpenFill } from 'react-icons/bs';
 import { FaMoneyBillAlt } from 'react-icons/fa';
 
 const buttonList = [
-  'Culture',
-  'Religious',
-  'Nature',
-  'Adventure',
-  'Entertainment',
+  {
+    category: 'Culture',
+    items: [
+    ]
+  },
+  {
+    category: 'Religious',
+    items: [
+      'Religious Facilities',
+    ]
+  },
+  {
+    category: 'Nature',
+    items: [
+      'Heritage sites'
+    ]
+  },
+  {
+    category: 'Adventure',
+    items: [
+    ]
+  },
+  {
+    category: 'Entertainment',
+    items: [
+      'Cinema',
+      'Hotel'
+    ]
+  },
+
 ]
 
 function App() {
@@ -35,9 +60,18 @@ function App() {
     setTabNumber(2)
   }
 
-  const handleFilterClick = () => {
-    setFilter('Hotel')
-  }
+
+
+  const handleFilterClick = (category) => {
+    // Find the specific category object in buttonList
+    const categoryObj = buttonList.find(list => list.category === category);
+
+    // If a category object is found, set the filter to its items
+    if (categoryObj) {
+      console.log(categoryObj.items);
+      setFilter(categoryObj.items);
+    }
+  };
 
   return (
     <div className="h-full w-full">
@@ -69,13 +103,15 @@ function App() {
       <div className="absolute right-4 bottom-4 z-20 text-right">
         <div className="relative">
 
-          {buttonList.map((button) => (
-            <div key={button} >
-              <button onClick={handleFilterClick}>
-                <p className="p-1 bg-white text-sm shadow-lg font-semibold mt-2 rounded w-fit">{button}</p>
-              </button>
-            </div>
-          ))}
+          {buttonList
+            .filter(filterList => filterList.items.length > 0)
+            .map((filterList) => (
+              <div key={filterList.category} >
+                <button onClick={() => handleFilterClick(filterList.category)}>
+                  <p className="p-1 bg-white text-sm shadow-lg font-semibold mt-2 rounded w-fit">{filterList.category}</p>
+                </button>
+              </div>
+            ))}
 
         </div>
       </div>

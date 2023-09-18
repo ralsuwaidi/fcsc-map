@@ -1,9 +1,11 @@
 import mapboxgl from 'mapbox-gl';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import geoJson from './data.json';
 import './Map.css';
 import hotelicon from './assets/icons/hotel.png'
 import mosqueicon from './assets/icons/mosque.png'
+import cinemaicon from './assets/icons/cinema.png'
+import heritageicon from './assets/icons/heritage.png'
 import { AddMapLayers } from './components/MapLayers';
 
 
@@ -12,6 +14,17 @@ mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_TOKEN
 
 const Map = ({ filter }) => {
   const mapContainerRef = useRef(null);
+
+  const createFilter = (filter) => {
+    if (!filter) return null;
+
+    let filterConditions = ['any'];
+    filter.forEach((item) => {
+      filterConditions.push(['==', ['get', 'Type'], item]);
+    });
+
+    return filterConditions;
+  };
 
   // Initialize map when component mounts
   useEffect(() => {
@@ -26,6 +39,8 @@ const Map = ({ filter }) => {
     const types = {
       'Hotel': hotelicon,
       'Religious Facilities': mosqueicon,
+      'Cinema': cinemaicon,
+      'Heritage sites': heritageicon,
     };
 
     const loadImages = async () => {
@@ -40,12 +55,13 @@ const Map = ({ filter }) => {
       }
     };
 
+
     map.on('load', async () => {
       map.addSource('chicago-parks', {
         type: 'geojson',
         data: geoJson,
         cluster: true,
-        filter: filter ? ["==", ["get", "Type"], filter] : null,
+        filter: filter ? createFilter(filter) : null,
         clusterMaxZoom: 14,
         clusterRadius: 50,
       });
@@ -55,7 +71,7 @@ const Map = ({ filter }) => {
       await loadImages();
 
       // add all map layers
-      AddMapLayers(map, filter)
+      AddMapLayers(map)
 
     });
 
