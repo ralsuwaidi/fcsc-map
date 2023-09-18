@@ -76,11 +76,11 @@ function App() {
     <div className="h-full w-full">
       <Map filter={filter} />
 
-      <div className='absolute top-0 bg-white w-screen h-12'>
+      {/* <div className='absolute top-0 bg-white w-screen h-12'>
         <form>
           <input type="text" id="first_name" class=" text-gray-900 border-none text-center  w-full p-2.5  dark:text-white" placeholder="Search" rquired />
         </form>
-      </div>
+      </div> */}
 
       <div className="absolute left-4 top-16 bg-white rounded shadow-lg" >
         <Button className='bg-white' size={'sm'} onClick={handleButtonClick1}>
