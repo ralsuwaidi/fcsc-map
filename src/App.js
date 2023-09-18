@@ -46,29 +46,23 @@ function App() {
 
 
   const handleButtonClick1 = () => {
-    SidebarVisible(!isSidebarVisible);
+    SidebarVisible(true);
     setTabNumber(0)
   }
 
   const handleButtonClick2 = () => {
-    SidebarVisible(!isSidebarVisible);
+    SidebarVisible(true);
     setTabNumber(1)
   }
 
   const handleButtonClick3 = () => {
-    SidebarVisible(!isSidebarVisible);
+    SidebarVisible(true);
     setTabNumber(2)
   }
 
 
 
   const handleFilterClick = (items) => {
-    // Find the specific category object in buttonList
-    // const categoryObj = buttonList.find(list => list.category === category);
-
-
-
-
     // If a category object is found, set the filter to its items
     if (items != filter) {
       console.log(items);
@@ -101,11 +95,12 @@ function App() {
       </div>
 
 
+
       {isSidebarVisible &&
-        GetSidebar(tabNumber)
+        GetSidebar(tabNumber, SidebarVisible)
       }
 
-      <div className="absolute right-4 bottom-4 z-20 text-right">
+      <div className="absolute right-4 bottom-4 z-10 text-right">
         <div className="relative">
 
           {buttonList

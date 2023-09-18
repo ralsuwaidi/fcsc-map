@@ -1,5 +1,9 @@
 'use client';
 
+import { Button } from "flowbite-react";
+import { useState } from "react";
+import { FaTimes } from 'react-icons/fa';
+
 
 const statList = [
     {
@@ -90,59 +94,76 @@ const emiratesList = [
     },
 ]
 
-export default function Sidebar(props) {
+
+export default function Sidebar({ title, SidebarVisible, children }) {
+
     return (
-        <div class="absolute top-16 left-20 rounded p-3 bg-white w-[70vw] h-[60vh] overflow-y-auto">
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{props.title}</h5>
-            {props.children}
-        </div >
+
+
+        // In the component
+        <div className="fixed top-0 left-0 w-full h-full p-3 bg-white overflow-y-auto z-20">
+            <div className="flex justify-between items-center">
+                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{title}</h5>
+                <Button color="light" size={'xs'} onClick={() => SidebarVisible(false)} className="d-flex justify-content-center align-items-center border-0">
+                    <FaTimes size={20} />
+                </Button>
+            </div>
+            {children}
+        </div>
     )
 }
 
-export function GetSidebar(tabNumber) {
-    if (tabNumber == 0) {
-        return (
-            <Sidebar title="Emirates of the UAE">
-                {emiratesList.map((data) => (
-                    <div class="max-w-sm mt-2 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                        <img class="rounded-t-lg" src={data.image} alt="" />
-                        <div class="p-5">
-                            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{data.title}</h5>
-                            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{data.content}</p>
+
+export function GetSidebar(tabNumber, sidebarVisible) {
+    switch (tabNumber) {
+        case 0:
+            return (
+                <Sidebar title="Emirates of the UAE" SidebarVisible={sidebarVisible}>
+                    {emiratesList.map((data) => (
+                        <div className="max-w-sm mt-2 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                            <img className="rounded-t-lg" src={data.image} alt="" />
+                            <div className="p-5">
+                                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{data.title}</h5>
+                                <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">{data.content}</p>
+                            </div>
                         </div>
+                    ))}
+                </Sidebar>
+            );
+
+        case 1:
+            return (
+                <Sidebar title='Basic Facts About the UAE' SidebarVisible={sidebarVisible}>
+                    <div className="grid-cols-2 grid gap-2">
+                        {statList.map((stat) => (
+                            <div className=" grow bg-gray-100 rounded-lg p-1">
+                                <div key={stat.title}>
+                                    <p className="text-sm font-semibold">{stat.title}</p>
+                                    <p className="text-xs pt-2">{stat.content}</p>
+                                </div>
+                            </div>
+                        ))}
                     </div>
-                ))}
-            </Sidebar>
-        )
-    } else if (tabNumber == 1) {
-        return (
-            <Sidebar title="Basic Facts About the UAE">
-                <div className="grid-cols-2 grid gap-2">
-                    {statList.map((stat) => (
-                        <div className=" w-28 bg-gray-100 rounded-lg p-1">
-                            <div key={stat.title}>
-                                <p className="text-sm font-semibold">{stat.title}</p>
-                                <p className="text-xs pt-2">{stat.content}</p>
+                </Sidebar>
+            );
+
+        case 2:
+            return (
+                <Sidebar title='Basic Facts About the UAE2' SidebarVisible={sidebarVisible}>
+                    <div className="grid-cols-2 grid gap-2">
+                        {statList.map((stat) => (
+                            <div className=" grow bg-gray-100 rounded-lg p-1">
+                                <div key={stat.title}>
+                                    <p className="text-sm font-semibold">{stat.title}</p>
+                                    <p className="text-xs pt-2">{stat.content}</p>
+                                </div>
                             </div>
-                        </div>
-                    ))}
-                </div>
-            </Sidebar>
-        )
-    } else {
-        return (
-            <Sidebar title="Basic Facts About the UAE3">
-                <div className="grid-cols-2 grid gap-2">
-                    {statList.map((stat) => (
-                        <div className=" w-28 bg-gray-100 rounded-lg p-1">
-                            <div key={stat.title}>
-                                <p className="text-sm font-semibold">{stat.title}</p>
-                                <p className="text-xs pt-2">{stat.content}</p>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </Sidebar>
-        )
+                        ))}
+                    </div>
+                </Sidebar>
+            );
+
+        default:
+            return null;
     }
 }
