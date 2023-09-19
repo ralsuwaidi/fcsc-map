@@ -95,14 +95,7 @@ const Map = ({ filter }) => {
     return () => map.remove();
   }, [filter]);
 
-  const markerClicked = (title) => {
-    window.alert(title);
-  };
 
-
-  // ...
-
-  // place this code at the end of your Map component
   return (
     <div className="map-container" ref={mapContainerRef}>
       <Transition show={isOpen} as={Fragment}>
@@ -127,7 +120,7 @@ const Map = ({ filter }) => {
               <div className="mt-4">
                 <button
                   type="button"
-                  className="px-4 py-2 text-base font-medium text-white bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm"
+                  className="px-2 py-1 text-base font-medium text-white bg-black rounded-md sm:text-sm"
                   onClick={() => setIsOpen(false)}
                 >
                   Close

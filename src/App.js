@@ -10,6 +10,14 @@ const buttonList = [
   {
     category: 'Culture',
     items: [
+      'Heritage sites',
+      'Library',
+    ]
+  },
+  {
+    category: 'Lifestyle',
+    items: [
+      'Sport Facilities'
     ]
   },
   {
@@ -21,7 +29,14 @@ const buttonList = [
   {
     category: 'Nature',
     items: [
-      'Heritage sites'
+      'Valley',
+      'Campsite',
+      'Mangrove',
+      'Mountains',
+      'Park',
+      'Dams',
+      'Islands',
+      'Protected Area',
     ]
   },
   {
@@ -33,7 +48,11 @@ const buttonList = [
     category: 'Entertainment',
     items: [
       'Cinema',
-      'Hotel'
+      'Museums',
+      'Performing Art',
+      'Theaters',
+      'Hotels',
+      'Shopping Facilities',
     ]
   },
 
@@ -75,11 +94,6 @@ function App() {
     <div className="h-full w-full">
       <Map filter={filter} />
 
-      {/* <div className='absolute top-0 bg-white w-screen h-12'>
-        <form>
-          <input type="text" id="first_name" class=" text-gray-900 border-none text-center  w-full p-2.5  dark:text-white" placeholder="Search" rquired />
-        </form>
-      </div> */}
 
       <div className="absolute left-4 top-16 bg-white rounded shadow-lg" >
         <Button className='bg-white' size={'sm'} onClick={handleButtonClick1}>
@@ -119,7 +133,7 @@ function App() {
                       mt-2 
                       rounded 
                       w-fit 
-                      ${isActive ? 'bg-orange-400 text-white' : 'bg-white text-black'}
+                      ${isActive ? 'bg-black text-white' : 'bg-white text-black'}
                     `}>
                       {filterList.category}
                     </p>
