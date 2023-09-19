@@ -11,12 +11,11 @@ export default function Tab({ title, SidebarVisible, children }) {
     return (
         // In the component
         <div className="fixed top-0 left-0 w-full h-full p-3 bg-white overflow-y-auto z-20">
-            <div className="flex justify-between items-center">
-                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{title}</h5>
-                <Button color="light" size={'xs'} onClick={() => SidebarVisible(false)} className="d-flex justify-content-center align-items-center border-0">
-                    <FaTimes size={20} />
-                </Button>
-            </div>
+            <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{title}</h5>
+            <Button color="light" size={'xs'} onClick={() => SidebarVisible(false)} className="d-flex fixed top-2 right-7 justify-content-center rounded-full  align-items-center bg-gray-100  border-0">
+                <FaTimes size={20} />
+            </Button>
+
             {children}
         </div>
     )
