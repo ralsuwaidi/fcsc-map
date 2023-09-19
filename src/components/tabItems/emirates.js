@@ -1,49 +1,3 @@
-'use client';
-
-import { Button } from "flowbite-react";
-import { useState } from "react";
-import { FaTimes } from 'react-icons/fa';
-
-
-const statList = [
-    {
-        title: 'Population',
-        content: '≈ 9.8 million people in 2021'
-    },
-    {
-        title: 'Area',
-        content: '71,023.6 km²'
-    },
-    {
-        title: 'Location',
-        content: 'The UAE overlooks the Arabian Gulf and borders the Kingdom of Saudi Arabia to the South and West and the Sultanate of Oman to the Southeast.'
-    },
-    {
-        title: 'Population',
-        content: 'The UAE time is 4 hours ahead of GMT'
-    },
-    {
-        title: 'Currency',
-        content: 'The Emirati Dirham is the official national currency. The US dollar is exchanged for the UAE Dirham at a rate of 3.67, and credit cards are widely accepted'
-    },
-    {
-        title: 'Climate',
-        content: 'The UAE has a warm and sunny weather most of the year, recording an ideal temperature from October to May.'
-    },
-    {
-        title: 'Official Language',
-        content: 'Arabic is the official language and English is widely spoken in public, markets and restaurants.'
-    },
-    {
-        title: '200 Nationalities',
-        content: 'The UAE hosts large foreign communities and all residents enjoy freedom of civil rights and practice of religion'
-    },
-    {
-        title: 'Security and Safety',
-        content: 'The UAE was ranked the third safest country in the world in 2020, offering residents and visitors highest levels of safety'
-    }
-]
-
 
 const emiratesList = [
     {
@@ -95,75 +49,20 @@ const emiratesList = [
 ]
 
 
-export default function Sidebar({ title, SidebarVisible, children }) {
+const EmiratesTab = ({ }) => {
+
 
     return (
-
-
-        // In the component
-        <div className="fixed top-0 left-0 w-full h-full p-3 bg-white overflow-y-auto z-20">
-            <div className="flex justify-between items-center">
-                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{title}</h5>
-                <Button color="light" size={'xs'} onClick={() => SidebarVisible(false)} className="d-flex justify-content-center align-items-center border-0">
-                    <FaTimes size={20} />
-                </Button>
+        emiratesList.map((data) => (
+            <div className="max-w-sm mt-2 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                <img className="rounded-t-lg" src={data.image} alt="" />
+                <div className="p-5">
+                    <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{data.title}</h5>
+                    <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">{data.content}</p>
+                </div>
             </div>
-            {children}
-        </div>
-    )
-}
+        ))
+    );
+};
 
-
-export function GetSidebar(tabNumber, sidebarVisible) {
-    switch (tabNumber) {
-        case 0:
-            return (
-                <Sidebar title="Emirates of the UAE" SidebarVisible={sidebarVisible}>
-                    {emiratesList.map((data) => (
-                        <div className="max-w-sm mt-2 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                            <img className="rounded-t-lg" src={data.image} alt="" />
-                            <div className="p-5">
-                                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{data.title}</h5>
-                                <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">{data.content}</p>
-                            </div>
-                        </div>
-                    ))}
-                </Sidebar>
-            );
-
-        case 1:
-            return (
-                <Sidebar title='Basic Facts About the UAE' SidebarVisible={sidebarVisible}>
-                    <div className="grid-cols-2 grid gap-2">
-                        {statList.map((stat) => (
-                            <div className=" grow bg-gray-100 rounded-lg p-1">
-                                <div key={stat.title}>
-                                    <p className="text-sm font-semibold">{stat.title}</p>
-                                    <p className="text-xs pt-2">{stat.content}</p>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </Sidebar>
-            );
-
-        case 2:
-            return (
-                <Sidebar title='Basic Facts About the UAE2' SidebarVisible={sidebarVisible}>
-                    <div className="grid-cols-2 grid gap-2">
-                        {statList.map((stat) => (
-                            <div className=" grow bg-gray-100 rounded-lg p-1">
-                                <div key={stat.title}>
-                                    <p className="text-sm font-semibold">{stat.title}</p>
-                                    <p className="text-xs pt-2">{stat.content}</p>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </Sidebar>
-            );
-
-        default:
-            return null;
-    }
-}
+export default EmiratesTab

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Map from "./Map";
-import { GetSidebar } from "./components/Sidebar";
+import { GetSidebar } from "./components/Tab";
 import { Button } from 'flowbite-react';
 import { BiWorld } from 'react-icons/bi';
 import { BsFillDoorOpenFill } from 'react-icons/bs';
@@ -59,7 +59,6 @@ function App() {
     SidebarVisible(true);
     setTabNumber(2)
   }
-
 
 
   const handleFilterClick = (items) => {
