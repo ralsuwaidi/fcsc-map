@@ -1,5 +1,5 @@
 import mapboxgl from 'mapbox-gl';
-import React, { useEffect, useRef } from 'react';
+import React, { Fragment, useEffect, useRef, useState } from 'react';
 import geoJson from './data.json';
 import './Map.css';
 import hotelicon from './assets/icons/hotel.png'
@@ -7,6 +7,7 @@ import mosqueicon from './assets/icons/mosque.png'
 import cinemaicon from './assets/icons/cinema.png'
 import heritageicon from './assets/icons/heritage.png'
 import { AddMapLayers } from './components/MapLayers';
+import { Dialog, Transition } from '@headlessui/react';
 
 
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_TOKEN
@@ -14,6 +15,8 @@ mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_TOKEN
 
 const Map = ({ filter }) => {
   const mapContainerRef = useRef(null);
+  const [isOpen, setIsOpen] = useState(false);
+  const [modalContent, setModalContent] = useState(null);
 
   const createFilter = (filter) => {
     if (!filter) return null;
@@ -77,8 +80,8 @@ const Map = ({ filter }) => {
 
       // Add click event to unclustered layers
       map.on('click', 'unclustered-point', function (e) {
-        console.log(e.features);  // e.features contains all the features at the clicked point
-        window.alert(`${e.features[0].properties["English Name"]}`);
+        setModalContent(e.features[0]);
+        setIsOpen(true);
       });
 
 
@@ -96,7 +99,47 @@ const Map = ({ filter }) => {
     window.alert(title);
   };
 
-  return <div className="map-container" ref={mapContainerRef} />;
+
+  // ...
+
+  // place this code at the end of your Map component
+  return (
+    <div className="map-container" ref={mapContainerRef}>
+      <Transition show={isOpen} as={Fragment}>
+        <Dialog as="div" className="fixed inset-0 z-10 overflow-y-auto" onClose={setIsOpen}>
+          <div className="px-4 min-h-screen text-center">
+            <Dialog.Overlay className="fixed inset-0 bg-black opacity-30" />
+
+            <span className="inline-block h-screen align-middle" aria-hidden="true">&#8203;</span>
+
+            <div className={'inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl'}>
+              <Dialog.Title as="h3" className="text-xl font-medium leading-6 text-gray-900">
+                {modalContent?.properties["English Name"]}
+              </Dialog.Title>
+              <div className="mt-4">
+                <p className="text-sm text-gray-500">
+                  {modalContent && `English Name: ${modalContent.properties["English Name"]}`}
+                  <br />
+                  {modalContent && `Arabic Name: ${modalContent.properties["Arabic Name"]}`}
+                </p>
+              </div>
+
+              <div className="mt-4">
+                <button
+                  type="button"
+                  className="px-4 py-2 text-base font-medium text-white bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </Dialog>
+      </Transition>
+    </div>
+  );
+
 };
 
 export default Map;
