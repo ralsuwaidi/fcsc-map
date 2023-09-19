@@ -95,7 +95,7 @@ function App() {
       <Map filter={filter} />
 
 
-      <div className="absolute left-4 top-16 bg-white rounded shadow-lg" >
+      <div className="absolute left-4 top-8 bg-white rounded shadow-lg" >
         <Button className='bg-white' size={'sm'} onClick={handleButtonClick1}>
           <BiWorld className=" text-black h-4 w-4" />
         </Button>
