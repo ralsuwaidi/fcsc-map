@@ -1,6 +1,6 @@
 import mapboxgl from 'mapbox-gl';
 import React, { Fragment, useEffect, useRef, useState } from 'react';
-import geoJson from './data.json';
+import geoJson from './data2.json';
 import './Map.css';
 import hotelicon from './assets/icons/hotel.png'
 import mosqueicon from './assets/icons/mosque.png'
