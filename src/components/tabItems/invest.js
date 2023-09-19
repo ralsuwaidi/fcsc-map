@@ -3,7 +3,7 @@ const InvestTab = ({ }) => {
 
 
     return (
-        <div className="pt-2 pb-6 prose prose-sm">
+        <div className="pt-2 pb-6 prose prose-sm prose-slate">
             <h2 id="investment-in-the-uae-tourism-industry">Investment in the UAE Tourism Industry</h2>
             <p>Local tourism authorities launch initiatives aimed at promoting the travel and tourism industry in the UAE, while a number of tourism initiatives, plans and projects are implemented to develop tourism and environment-friendly destinations, and promote the cultural tourism industry, tourism events, activities, festivals and sustainability projects. Government tourism authorities work closely with private sector entities at the state level to support accelerated growth and provide better value, welcoming all investors from all over the world and establishing partnerships with international bodies. The tourism authorities in the UAE ensure the quality of tourism services, enhance the tourism experience to the highest level, and align the classification of hotels with standards of service and value provided to visitors.</p>
             <h2 id="emirates-tourism-council">Emirates Tourism Council</h2>

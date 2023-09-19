@@ -73,6 +73,18 @@ const Map = ({ filter }) => {
       // add all map layers
       AddMapLayers(map)
 
+
+
+      // Add click event to unclustered layers
+      map.on('click', 'unclustered-point', function (e) {
+        console.log(e.features);  // e.features contains all the features at the clicked point
+        window.alert(`${e.features[0].properties["English Name"]}`);
+      });
+
+
+      // Clean up on unmount
+      return () => map.remove();
+
     });
 
 
