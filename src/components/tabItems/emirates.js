@@ -53,15 +53,17 @@ const EmiratesTab = ({ }) => {
 
 
     return (
-        emiratesList.map((data) => (
-            <div className="max-w-sm mt-2 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                <img className="rounded-t-lg" src={data.image} alt="" />
-                <div className="p-5">
-                    <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{data.title}</h5>
-                    <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">{data.content}</p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            {emiratesList.map((data) => (
+                <div className="max-w-sm mt-2 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                    <img className="rounded-t-lg" src={data.image} alt="" />
+                    <div className="p-5">
+                        <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{data.title}</h5>
+                        <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">{data.content}</p>
+                    </div>
                 </div>
-            </div>
-        ))
+            ))}
+        </div>
     );
 };
 
