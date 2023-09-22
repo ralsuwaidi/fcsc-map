@@ -2,10 +2,30 @@ import mapboxgl from 'mapbox-gl';
 import React, { Fragment, useEffect, useRef, useState } from 'react';
 import geoJson from './data2.json';
 import './Map.css';
-import hotelicon from './assets/icons/hotel.png'
-import mosqueicon from './assets/icons/mosque.png'
+
+
+
+import campsiteicon from './assets/icons/campsite.png'
 import cinemaicon from './assets/icons/cinema.png'
-import heritageicon from './assets/icons/heritage.png'
+import damsicon from './assets/icons/dams.png'
+import heritagesiteicon from './assets/icons/heritage-site.png'
+import hotelicon from './assets/icons/hotel.png'
+import hotelsicon from './assets/icons/hotels.png'
+import islandicon from './assets/icons/island.png'
+import liberaryicon from './assets/icons/liberary.png'
+import mangroveicon from './assets/icons/mangrove.png'
+import mosqueicon from './assets/icons/mosque.png'
+import mountainicon from './assets/icons/mountain.png'
+import museumicon from './assets/icons/museum.png'
+import parksicon from './assets/icons/parks.png'
+import performingartsicon from './assets/icons/performing-arts.png'
+import protectedareaicon from './assets/icons/protected-area.png'
+import religiousfacilitiesicon from './assets/icons/religious-facilities.png'
+import shoppingfacilitiesicon from './assets/icons/shopping-facilities.png'
+import sportsfacilitiesicon from './assets/icons/sports-facilities.png'
+import theatersicon from './assets/icons/theaters.png'
+import valleyicon from './assets/icons/valley.png'
+
 import { AddMapLayers } from './components/MapLayers';
 import { Dialog, Transition } from '@headlessui/react';
 
@@ -40,10 +60,26 @@ const Map = ({ filter }) => {
     });
 
     const types = {
-      'Hotel': hotelicon,
-      'Religious Facilities': mosqueicon,
+      'Campsite': campsiteicon,
       'Cinema': cinemaicon,
-      'Heritage sites': heritageicon,
+      'Dams': damsicon,
+      'Heritage sites': heritagesiteicon,
+      'hotelicon': hotelicon,
+      'Hotels': hotelsicon,
+      'Islands': islandicon,
+      'Library': liberaryicon,
+      'Mangrove': mangroveicon,
+      'mosqueicon': mosqueicon,
+      'Mountains': mountainicon,
+      'Museums': museumicon,
+      'Park': parksicon,
+      'Performing Art': performingartsicon,
+      'Protected Area': protectedareaicon,
+      'Religious Facilities': religiousfacilitiesicon,
+      'Shopping Facilities': shoppingfacilitiesicon,
+      'Sport Facilities': sportsfacilitiesicon,
+      'Theaters': theatersicon,
+      'Valley': valleyicon
     };
 
     const loadImages = async () => {

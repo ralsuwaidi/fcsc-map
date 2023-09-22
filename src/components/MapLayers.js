@@ -53,7 +53,7 @@ function AddMapLayers(map) {
         layout: {
             'icon-image': ['get', 'Type'],
             'icon-allow-overlap': true,
-            'icon-size': 0.5,
+            'icon-size': 0.3,
         },
     });
 
