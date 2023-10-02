@@ -106,6 +106,17 @@ const Map = ({ filter }) => {
       });
 
 
+      // Add GeolocateControl to the map
+      map.addControl(
+        new mapboxgl.GeolocateControl({
+          positionOptions: {
+            enableHighAccuracy: true
+          },
+          trackUserLocation: true,
+          showUserHeading: true
+        })
+      );
+
       // add data source
       await loadImages();
 
