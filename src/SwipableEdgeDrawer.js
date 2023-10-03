@@ -8,6 +8,8 @@ import Box from '@mui/material/Box';
 import Skeleton from '@mui/material/Skeleton';
 import Typography from '@mui/material/Typography';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
+import Input from '@mui/joy/Input';
+
 
 
 const drawerBleeding = 56;
@@ -77,6 +79,7 @@ function SwipeableEdgeDrawer(props) {
                     }}
                 >
                     <Puller />
+
                     <Typography sx={{ p: 2, color: 'text.secondary' }}>{props.headerText}</Typography>
 
                 </StyledBox>
