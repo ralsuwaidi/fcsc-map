@@ -5,7 +5,7 @@ import { Button } from 'flowbite-react';
 import { BiWorld } from 'react-icons/bi';
 import { BsFillDoorOpenFill } from 'react-icons/bs';
 import { FaMoneyBillAlt } from 'react-icons/fa';
-import DrawerContent from "./components/DrawerContent";
+import DrawerContent from "./components/Drawer/DrawerContent";
 import SwipeableEdgeDrawer from "./SwipableEdgeDrawer";
 import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
