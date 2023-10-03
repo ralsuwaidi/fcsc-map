@@ -77,12 +77,8 @@ function SwipeableEdgeDrawer(props) {
                     }}
                 >
                     <Puller />
-                    {/* <Typography sx={{ p: 2, color: 'text.secondary' }}>51 results</Typography> */}
+                    <Typography sx={{ p: 2, color: 'text.secondary' }}>{props.headerText}</Typography>
 
-                    <div className='pt-5 pb-4 pl-2'>
-
-                        {props.puller}
-                    </div>
 
 
                 </StyledBox>

@@ -156,34 +156,30 @@ function App() {
       </div>
 
 
-      <SwipeableEdgeDrawer
-        puller={
-          <div className='no-scrollbar overflow-x-scroll'>
-            <Stack direction="row" spacing={1}>
-              {buttonList
-                .filter(filterList => filterList.items.length > 0)
-                .map((filterList) => {
-                  // Create a boolean check to see if the filterList matches the current filter
-                  const isActive = filter && JSON.stringify(filterList.items.sort()) === JSON.stringify(filter.sort());
+      <SwipeableEdgeDrawer headerText="1Map">
 
-                  return (
-                    <div key={filterList.category} >
-                      <Chip
-                        label={filterList.category}
-                        variant={isActive ? "default" : "outlined"}
-                        onClick={() => handleFilterClick(filterList.items)}
-                        color={isActive ? "primary" : "default"}
-                        size="small"
-                      />
-                    </div>
-                  )
-                })}
-            </Stack>
-          </div>
-        }
-      >
+        <div className='no-scrollbar overflow-x-scroll mb-4'>
+          <Stack direction="row" spacing={1}>
+            {buttonList
+              .filter(filterList => filterList.items.length > 0)
+              .map((filterList) => {
+                // Create a boolean check to see if the filterList matches the current filter
+                const isActive = filter && JSON.stringify(filterList.items.sort()) === JSON.stringify(filter.sort());
 
-
+                return (
+                  <div key={filterList.category} >
+                    <Chip
+                      label={filterList.category}
+                      variant={isActive ? "default" : "outlined"}
+                      onClick={() => handleFilterClick(filterList.items)}
+                      // color={isActive ? "primary" : "default"}
+                      size="small"
+                    />
+                  </div>
+                )
+              })}
+          </Stack>
+        </div>
         <DrawerContent />
       </SwipeableEdgeDrawer>
 
