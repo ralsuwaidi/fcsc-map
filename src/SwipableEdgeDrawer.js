@@ -32,15 +32,11 @@ const Puller = styled(Box)(({ theme }) => ({
 }));
 
 function SwipeableEdgeDrawer(props) {
-    const { window } = props;
     const [open, setOpen] = React.useState(false);
 
     const toggleDrawer = (newOpen) => () => {
         setOpen(newOpen);
     };
-
-    // This is used only for the example
-    const container = window !== undefined ? () => window().document.body : undefined;
 
     return (
         <Root>
@@ -57,13 +53,14 @@ function SwipeableEdgeDrawer(props) {
                 <Button onClick={toggleDrawer(true)}>Open</Button>
             </Box>
             <SwipeableDrawer
-                container={container}
                 anchor="bottom"
                 open={open}
                 onClose={toggleDrawer(false)}
                 onOpen={toggleDrawer(true)}
                 swipeAreaWidth={drawerBleeding}
                 disableSwipeToOpen={false}
+                sx={{ "& .MuiDrawer-paper": { height: 'calc(100% - 64px)', top: 64 } }}
+                containerStyle={{ height: 'calc(100% - 128px)' }}
                 ModalProps={{
                     keepMounted: true,
                 }}
