@@ -124,37 +124,6 @@ function App() {
         GetSidebar(tabNumber, SidebarVisible)
       }
 
-      {/* show filters  */}
-      <div className="absolute right-4 bottom-4 z-10 text-right">
-        <div className="relative">
-          {buttonList
-            .filter(filterList => filterList.items.length > 0)
-            .map((filterList) => {
-              // Create a boolean check to see if the filterList matches the current filter
-              const isActive = filter && JSON.stringify(filterList.items.sort()) === JSON.stringify(filter.sort());
-
-              return (
-                <div key={filterList.category} >
-                  <button onClick={() => handleFilterClick(filterList.items)}>
-                    <p className={`
-                      p-1 
-                      text-sm 
-                      shadow-lg 
-                      font-semibold 
-                      mt-2 
-                      rounded 
-                      w-fit 
-                      ${isActive ? 'bg-black text-white' : 'bg-white text-black'}
-                    `}>
-                      {filterList.category}
-                    </p>
-                  </button>
-                </div>
-              )
-            })}
-        </div>
-      </div>
-
 
       <SwipeableEdgeDrawer headerText="1Map">
 
