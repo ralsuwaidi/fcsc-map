@@ -5,8 +5,8 @@ import { Button } from 'flowbite-react';
 import { BiWorld } from 'react-icons/bi';
 import { BsFillDoorOpenFill } from 'react-icons/bs';
 import { FaMoneyBillAlt } from 'react-icons/fa';
-import Drawer from "react-bottom-drawer";
 import DrawerContent from "./components/DrawerContent";
+import SwipeableEdgeDrawer from "./SwipableEdgeDrawer";
 
 const buttonList = [
   {
@@ -155,17 +155,7 @@ function App() {
       </div>
 
 
-
-
-      <Drawer
-        duration={250}
-        hideScrollbars={true}
-        onClose={closeDrawer}
-        isVisible={isVisible}
-      >
-        <DrawerContent />
-      </Drawer>
-
+      <SwipeableEdgeDrawer />
 
     </div>
   );
