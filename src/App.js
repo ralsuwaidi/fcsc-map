@@ -5,6 +5,7 @@ import { Button } from 'flowbite-react';
 import { BiWorld } from 'react-icons/bi';
 import { BsFillDoorOpenFill } from 'react-icons/bs';
 import { FaMoneyBillAlt } from 'react-icons/fa';
+import MapDrawer from "./components/MapDrawer";
 
 const buttonList = [
   {
@@ -92,9 +93,11 @@ function App() {
 
   return (
     <div className="h-full w-full">
+
+      {/* import the map */}
       <Map filter={filter} />
 
-
+      {/* add pages on the top left  */}
       <div className="absolute left-4 top-8 bg-white rounded shadow-lg" >
         <Button className='bg-white' size={'sm'} onClick={handleButtonClick1}>
           <BiWorld className=" text-black h-4 w-4" />
@@ -108,14 +111,14 @@ function App() {
       </div>
 
 
-
+      {/* when pages are clicked show  */}
       {isSidebarVisible &&
         GetSidebar(tabNumber, SidebarVisible)
       }
 
+      {/* show filters  */}
       <div className="absolute right-4 bottom-4 z-10 text-right">
         <div className="relative">
-
           {buttonList
             .filter(filterList => filterList.items.length > 0)
             .map((filterList) => {
@@ -141,9 +144,11 @@ function App() {
                 </div>
               )
             })}
-
         </div>
       </div>
+
+      <MapDrawer />
+
     </div>
   );
 }

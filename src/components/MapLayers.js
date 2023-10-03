@@ -54,6 +54,10 @@ function AddMapLayers(map) {
             'icon-image': ['get', 'Type'],
             'icon-allow-overlap': true,
             'icon-size': 0.3,
+            'text-field': ['get', 'English Name'],
+            'text-variable-anchor': ['top', 'bottom', 'left', 'right'],
+            'text-radial-offset': 0.5,
+            'text-justify': 'auto',
         },
     });
 

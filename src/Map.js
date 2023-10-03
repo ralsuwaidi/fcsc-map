@@ -54,7 +54,7 @@ const Map = ({ filter }) => {
 
     const map = new mapboxgl.Map({
       container: mapContainerRef.current,
-      style: 'mapbox://styles/mapbox/light-v11',
+      style: 'mapbox://styles/mapbox/streets-v12',
       center: [55, 25.3],
       zoom: 7,
     });
