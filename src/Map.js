@@ -49,6 +49,14 @@ const Map = ({ filter }) => {
     return filterConditions;
   };
 
+  const geolocate = new mapboxgl.GeolocateControl({
+    positionOptions: {
+      enableHighAccuracy: true
+    },
+    trackUserLocation: true
+  });
+
+
   // Initialize map when component mounts
   useEffect(() => {
 
@@ -58,6 +66,7 @@ const Map = ({ filter }) => {
       center: [55, 25.3],
       zoom: 7,
     });
+    map.addControl(geolocate)
 
     const types = {
       'Campsite': campsiteicon,
@@ -94,7 +103,6 @@ const Map = ({ filter }) => {
       }
     };
 
-
     map.on('load', async () => {
       map.addSource('chicago-parks', {
         type: 'geojson',
@@ -105,24 +113,13 @@ const Map = ({ filter }) => {
         clusterRadius: 50,
       });
 
-
-      // Add GeolocateControl to the map
-      map.addControl(
-        new mapboxgl.GeolocateControl({
-          positionOptions: {
-            enableHighAccuracy: true
-          },
-          trackUserLocation: true,
-          showUserHeading: true
-        })
-      );
+      geolocate.trigger()
 
       // add data source
       await loadImages();
 
       // add all map layers
       AddMapLayers(map)
-
 
 
       // Add click event to unclustered layers

@@ -126,7 +126,6 @@ function App() {
 
 
       <SwipeableEdgeDrawer headerText="1Map">
-
         <div className='no-scrollbar overflow-x-scroll mb-4'>
           <Stack direction="row" spacing={1}>
             {buttonList
