@@ -6,6 +6,7 @@ import DrawerButtonGroup from "./DrawerButtons";
 import DrawerImageList from "./DrawerImageList";
 import DrawerList from "./DrawerList";
 
+
 function DrawerContent() {
     return (
         <div>

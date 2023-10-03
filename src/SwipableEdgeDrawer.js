@@ -5,11 +5,11 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { grey } from '@mui/material/colors';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
-import Skeleton from '@mui/material/Skeleton';
-import Typography from '@mui/material/Typography';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
-import Input from '@mui/joy/Input';
-
+import GetTemperature from './components/GetTemperature';
+import {
+    WbSunny,
+} from '@mui/icons-material';
 
 
 const drawerBleeding = 56;
@@ -79,8 +79,18 @@ function SwipeableEdgeDrawer(props) {
                     }}
                 >
                     <Puller />
+                    <div className='flex justify-between'>
 
-                    <Typography sx={{ p: 2, color: 'text.secondary' }}>{props.headerText}</Typography>
+                        <div className='flex'>
+                            <p className='py-4 pl-4 pr-1 text-lg'>One Map</p>
+                            <p className='text-green-500 h-full mt-5 p-0.5 border-green-500 text-xs'>beta</p>
+                        </div>
+                        <div className='mt-4 pr-6'>
+                            <div className='rounded border px-2 border-gray-300'>
+                                <WbSunny color='warning' fontSize='' /> <GetTemperature />
+                            </div>
+                        </div>
+                    </div>
 
                 </StyledBox>
                 <StyledBox
