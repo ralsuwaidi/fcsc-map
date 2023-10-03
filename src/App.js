@@ -5,7 +5,8 @@ import { Button } from 'flowbite-react';
 import { BiWorld } from 'react-icons/bi';
 import { BsFillDoorOpenFill } from 'react-icons/bs';
 import { FaMoneyBillAlt } from 'react-icons/fa';
-import MapDrawer from "./components/MapDrawer";
+import Drawer from "react-bottom-drawer";
+import DrawerContent from "./components/DrawerContent";
 
 const buttonList = [
   {
@@ -63,6 +64,12 @@ function App() {
   const [isSidebarVisible, SidebarVisible] = useState(false);
   const [tabNumber, setTabNumber] = useState(0);
   const [filter, setFilter] = useState(null);
+  const [isVisible, setIsVisible] = React.useState(true);
+  const closeDrawer = React.useCallback(() => setIsVisible(false), []);
+  const openDrawer = React.useCallback(() => setIsVisible(true), []);
+  const onClose = React.useCallback(() => {
+    setIsVisible(false);
+  }, []);
 
 
   const handleButtonClick1 = () => {
@@ -147,7 +154,18 @@ function App() {
         </div>
       </div>
 
-      <MapDrawer />
+
+
+
+      <Drawer
+        duration={250}
+        hideScrollbars={true}
+        onClose={closeDrawer}
+        isVisible={isVisible}
+      >
+        <DrawerContent />
+      </Drawer>
+
 
     </div>
   );
