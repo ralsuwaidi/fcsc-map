@@ -7,7 +7,8 @@ import { BsFillDoorOpenFill } from 'react-icons/bs';
 import { FaMoneyBillAlt } from 'react-icons/fa';
 import DrawerContent from "./components/DrawerContent";
 import SwipeableEdgeDrawer from "./SwipableEdgeDrawer";
-
+import Chip from '@mui/material/Chip';
+import Stack from '@mui/material/Stack';
 const buttonList = [
   {
     category: 'Culture',
@@ -155,7 +156,36 @@ function App() {
       </div>
 
 
-      <SwipeableEdgeDrawer />
+      <SwipeableEdgeDrawer
+        puller={
+          <div className='no-scrollbar overflow-x-scroll'>
+            <Stack direction="row" spacing={1}>
+              {buttonList
+                .filter(filterList => filterList.items.length > 0)
+                .map((filterList) => {
+                  // Create a boolean check to see if the filterList matches the current filter
+                  const isActive = filter && JSON.stringify(filterList.items.sort()) === JSON.stringify(filter.sort());
+
+                  return (
+                    <div key={filterList.category} >
+                      <Chip
+                        label={filterList.category}
+                        variant={isActive ? "default" : "outlined"}
+                        onClick={() => handleFilterClick(filterList.items)}
+                        color={isActive ? "primary" : "default"}
+                        size="small"
+                      />
+                    </div>
+                  )
+                })}
+            </Stack>
+          </div>
+        }
+      >
+
+
+        <DrawerContent />
+      </SwipeableEdgeDrawer>
 
     </div>
   );

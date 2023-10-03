@@ -9,6 +9,7 @@ import Skeleton from '@mui/material/Skeleton';
 import Typography from '@mui/material/Typography';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 
+
 const drawerBleeding = 56;
 
 const Root = styled('div')(({ theme }) => ({
@@ -76,7 +77,14 @@ function SwipeableEdgeDrawer(props) {
                     }}
                 >
                     <Puller />
-                    <Typography sx={{ p: 2, color: 'text.secondary' }}>51 results</Typography>
+                    {/* <Typography sx={{ p: 2, color: 'text.secondary' }}>51 results</Typography> */}
+
+                    <div className='pt-5 pb-4 pl-2'>
+
+                        {props.puller}
+                    </div>
+
+
                 </StyledBox>
                 <StyledBox
                     sx={{
@@ -86,7 +94,7 @@ function SwipeableEdgeDrawer(props) {
                         overflow: 'auto',
                     }}
                 >
-                    <Skeleton variant="rectangular" height="100%" />
+                    {props.children}
                 </StyledBox>
             </SwipeableDrawer>
         </Root>
