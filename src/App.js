@@ -66,26 +66,12 @@ function App() {
   const [tabNumber, setTabNumber] = useState(0);
   const [filter, setFilter] = useState(null);
   const [isVisible, setIsVisible] = React.useState(true);
-  const closeDrawer = React.useCallback(() => setIsVisible(false), []);
-  const openDrawer = React.useCallback(() => setIsVisible(true), []);
-  const onClose = React.useCallback(() => {
-    setIsVisible(false);
-  }, []);
+  const [isDrawerOpen, setDrawerOpen] = useState(false);
 
-
-  const handleButtonClick1 = () => {
+  const handleButtonClick = (tabNumber) => {
     SidebarVisible(true);
-    setTabNumber(0)
-  }
-
-  const handleButtonClick2 = () => {
-    SidebarVisible(true);
-    setTabNumber(1)
-  }
-
-  const handleButtonClick3 = () => {
-    SidebarVisible(true);
-    setTabNumber(2)
+    setDrawerOpen(true)
+    setTabNumber(tabNumber);
   }
 
 
@@ -97,7 +83,7 @@ function App() {
     } else {
       setFilter(null)
     }
-  };
+  }
 
   return (
     <div className="h-full w-full">
@@ -107,25 +93,24 @@ function App() {
 
       {/* add pages on the top left  */}
       <div className="absolute left-4 top-8 bg-white rounded shadow-lg" >
-        <Button className='bg-white' size={'sm'} onClick={handleButtonClick1}>
+        <Button className='bg-white' size={'sm'} onClick={() => handleButtonClick(0)}>
           <BiWorld className=" text-black h-4 w-4" />
         </Button>
-        <Button className='bg-white' size={'sm'} onClick={handleButtonClick2}>
+        <Button className='bg-white' size={'sm'} onClick={() => handleButtonClick(1)}>
           <BsFillDoorOpenFill className=" text-black h-4 w-4" />
         </Button>
-        <Button className='bg-white' size={'sm'} onClick={handleButtonClick3}>
+        <Button className='bg-white' size={'sm'} onClick={() => handleButtonClick(2)}>
           <FaMoneyBillAlt className=" text-black h-4 w-4" />
         </Button>
       </div>
 
 
-      {/* when pages are clicked show  */}
-      {isSidebarVisible &&
-        GetSidebar(tabNumber, SidebarVisible)
-      }
 
 
-      <SwipeableEdgeDrawer headerText="1Map">
+      <SwipeableEdgeDrawer headerText="1Map"
+        isDrawerOpen={isDrawerOpen}
+        setDrawerOpen={setDrawerOpen}
+      >
         <div className='no-scrollbar overflow-x-scroll mb-4'>
           <Stack direction="row" spacing={1}>
             {buttonList
@@ -148,7 +133,10 @@ function App() {
               })}
           </Stack>
         </div>
-        <DrawerContent />
+
+        {isSidebarVisible ? GetSidebar(tabNumber) : <DrawerContent />}
+
+
       </SwipeableEdgeDrawer>
 
     </div>

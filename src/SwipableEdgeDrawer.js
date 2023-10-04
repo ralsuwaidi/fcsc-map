@@ -34,11 +34,11 @@ const Puller = styled(Box)(({ theme }) => ({
     left: 'calc(50% - 15px)',
 }));
 
-function SwipeableEdgeDrawer(props) {
-    const [open, setOpen] = React.useState(false);
+function SwipeableEdgeDrawer({ children, isDrawerOpen, setDrawerOpen, headerText}) {
+    
 
     const toggleDrawer = (newOpen) => () => {
-        setOpen(newOpen);
+        setDrawerOpen(newOpen);
     };
 
     return (
@@ -57,7 +57,7 @@ function SwipeableEdgeDrawer(props) {
             </Box>
             <SwipeableDrawer
                 anchor="bottom"
-                open={open}
+                open={isDrawerOpen}
                 onClose={toggleDrawer(false)}
                 onOpen={toggleDrawer(true)}
                 swipeAreaWidth={drawerBleeding}
@@ -82,7 +82,7 @@ function SwipeableEdgeDrawer(props) {
                     <div className='flex justify-between'>
 
                         <div className='flex'>
-                            <p className='py-4 pl-4 pr-1 text-lg'>One Map</p>
+                            <p className='py-4 pl-4 pr-1 text-lg'>{headerText}</p>
                             <p className='text-green-500 h-full mt-5 p-0.5 border-green-500 text-xs'>beta</p>
                         </div>
                         <div className='mt-4 pr-6'>
@@ -101,7 +101,7 @@ function SwipeableEdgeDrawer(props) {
                         overflow: 'auto',
                     }}
                 >
-                    {props.children}
+                    {children}
                 </StyledBox>
             </SwipeableDrawer>
         </Root>
