@@ -49,22 +49,24 @@ const Map = ({ filter }) => {
     return filterConditions;
   };
 
-  const geolocate = new mapboxgl.GeolocateControl({
-    positionOptions: {
-      enableHighAccuracy: true
-    },
-    trackUserLocation: true
-  });
 
 
   // Initialize map when component mounts
   useEffect(() => {
 
+    const geolocate = new mapboxgl.GeolocateControl({
+      positionOptions: {
+        enableHighAccuracy: true
+      },
+      trackUserLocation: true
+    });
+  
+
     const map = new mapboxgl.Map({
       container: mapContainerRef.current,
       style: 'mapbox://styles/mapbox/streets-v12',
       center: [55, 25.3],
-      zoom: 7,
+      zoom: 6,
     });
     map.addControl(geolocate)
 
