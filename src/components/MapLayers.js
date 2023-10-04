@@ -1,9 +1,4 @@
-import mapboxgl from "mapbox-gl";
 
-/**
- * Function to add map layers
- * @param {mapboxgl.Map} map - The Mapbox map instance
- */
 function AddMapLayers(map) {
     map.addLayer({
         id: 'clusters',
@@ -58,6 +53,7 @@ function AddMapLayers(map) {
             'text-variable-anchor': ['top', 'bottom', 'left', 'right'],
             'text-radial-offset': 0.5,
             'text-justify': 'auto',
+            'text-size': 10
         },
     });
 

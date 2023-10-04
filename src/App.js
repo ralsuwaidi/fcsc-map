@@ -65,7 +65,6 @@ function App() {
   const [isSidebarVisible, SidebarVisible] = useState(false);
   const [tabNumber, setTabNumber] = useState(0);
   const [filter, setFilter] = useState(null);
-  const [isVisible, setIsVisible] = React.useState(true);
   const [isDrawerOpen, setDrawerOpen] = useState(false);
 
   const handleButtonClick = (tabNumber) => {
@@ -77,7 +76,7 @@ function App() {
 
   const handleFilterClick = (items) => {
     // If a category object is found, set the filter to its items
-    if (items != filter) {
+    if (items !== filter) {
       setFilter(items);
     } else {
       setFilter(null)
