@@ -33,7 +33,7 @@ import { Dialog, Transition } from '@headlessui/react';
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_TOKEN
 
 
-const Map = ({ filter }) => {
+const Map = ({ filter, setDrawerOpen, SidebarVisible }) => {
   const mapContainerRef = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
   const [modalContent, setModalContent] = useState(null);
@@ -60,7 +60,7 @@ const Map = ({ filter }) => {
       },
       trackUserLocation: true
     });
-  
+
 
     const map = new mapboxgl.Map({
       container: mapContainerRef.current,
@@ -126,8 +126,10 @@ const Map = ({ filter }) => {
 
       // Add click event to unclustered layers
       map.on('click', 'unclustered-point', function (e) {
-        setModalContent(e.features[0]);
-        setIsOpen(true);
+        // setModalContent(e.features[0]);
+        setDrawerOpen(true)
+        SidebarVisible(false)
+        // setIsOpen(true);
       });
 
 

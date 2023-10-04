@@ -78,7 +78,6 @@ function App() {
   const handleFilterClick = (items) => {
     // If a category object is found, set the filter to its items
     if (items != filter) {
-      console.log(items);
       setFilter(items);
     } else {
       setFilter(null)
@@ -89,7 +88,7 @@ function App() {
     <div className="h-full w-full">
 
       {/* import the map */}
-      <Map filter={filter} />
+      <Map setDrawerOpen={setDrawerOpen} SidebarVisible={SidebarVisible} filter={filter} />
 
       {/* add pages on the top left  */}
       <div className="absolute left-4 top-8 bg-white rounded shadow-lg" >

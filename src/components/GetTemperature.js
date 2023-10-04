@@ -14,10 +14,10 @@ const GetTemperature = () => {
 
     const getWeather = async () => {
         try {
-            const response = await axios.get(`http://api.weatherapi.com/v1/current.json?key=4e06f24caa624e19a1d122353230310&q=Dubai`);
+            const response = await axios.get(`https://api.open-meteo.com/v1/forecast?latitude=23.4241&longitude=53.8478&current_weather=true&hourly=temperature_2m`);
             // Set the state of temperature
-            console.log(response.data.current.temp_c)
-            setTemperature(response.data.current.temp_c);
+            console.log(response.data.current_weather.temperature)
+            setTemperature(response.data.current_weather.temperature);
         } catch (error) {
             console.log('Could not fetch weather data', error);
         }
