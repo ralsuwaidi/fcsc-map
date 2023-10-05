@@ -48,7 +48,7 @@ function AddMapLayers(map) {
         layout: {
             'icon-image': ['get', 'Type'],
             'icon-allow-overlap': true,
-            'icon-size': 0.3,
+            'icon-size': 0.2,
             'text-field': ['get', 'English Name'],
             'text-variable-anchor': ['top', 'bottom', 'left', 'right'],
             'text-radial-offset': 0.5,

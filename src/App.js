@@ -9,6 +9,7 @@ import DrawerContent from "./components/Drawer/DrawerContent";
 import SwipeableEdgeDrawer from "./SwipableEdgeDrawer";
 import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
+import OnLoadModal from "./components/OnLoadModal";
 const buttonList = [
   {
     category: 'Culture',
@@ -86,7 +87,6 @@ function App() {
   return (
     <div className="h-full w-full">
 
-      {/* import the map */}
       <Map setDrawerOpen={setDrawerOpen} SidebarVisible={SidebarVisible} filter={filter} />
 
       {/* add pages on the top left  */}
@@ -103,9 +103,10 @@ function App() {
       </div>
 
 
+      <OnLoadModal />
 
-
-      <SwipeableEdgeDrawer headerText="1Map"
+      <SwipeableEdgeDrawer
+        headerText="1Map"
         isDrawerOpen={isDrawerOpen}
         setDrawerOpen={setDrawerOpen}
       >
@@ -132,9 +133,7 @@ function App() {
           </Stack>
         </div>
 
-        {isSidebarVisible ? GetSidebar(tabNumber) : <DrawerContent />}
-
-
+        {isSidebarVisible ? GetSidebar(tabNumber) : <DrawerContent setTabNumber={setTabNumber} />}
       </SwipeableEdgeDrawer>
 
     </div>

@@ -1,0 +1,77 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "Arabic Name": "فندق كارفان",
+                "English Name": "Caravana",
+                "Type": "Hotel",
+                "Longitude": 55.42546434,
+                "Latitude": 25.39747986,
+                "openingHour": "8:00 AM",
+                "closingHour": "5:00 PM",
+                "operationalDays": [
+                    "Monday",
+                    "Tuesday",
+                    "Wednesday",
+                    "Thursday",
+                    "Friday"
+                ],
+                "goodToKnow": [
+                    "Wheelchair accessible",
+                    "Free Wi-Fi",
+                    "Pet friendly"
+                ],
+                "images": [
+                    "https://example.com/image1.jpg",
+                    "https://example.com/image2.jpg",
+                    "https://example.com/image3.jpg"
+                ]
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    55.42546434,
+                    25.39747986
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Arabic Name": "فندق عجمان",
+                "English Name": "Ajman Hotel",
+                "Type": "Hotel",
+                "Longitude": 55.44291534,
+                "Latitude": 25.42280349,
+                "openingHour": "8:00 AM",
+                "closingHour": "5:00 PM",
+                "operationalDays": [
+                    "Monday",
+                    "Tuesday",
+                    "Wednesday",
+                    "Thursday",
+                    "Friday"
+                ],
+                "goodToKnow": [
+                    "Wheelchair accessible",
+                    "Free Wi-Fi",
+                    "Pet friendly"
+                ],
+                "images": [
+                    "https://example.com/image1.jpg",
+                    "https://example.com/image2.jpg",
+                    "https://example.com/image3.jpg"
+                ]
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    55.44291534,
+                    25.42280349
+                ]
+            }
+        }
+    ]
+}

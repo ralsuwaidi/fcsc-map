@@ -34,8 +34,8 @@ const Puller = styled(Box)(({ theme }) => ({
     left: 'calc(50% - 15px)',
 }));
 
-function SwipeableEdgeDrawer({ children, isDrawerOpen, setDrawerOpen, headerText}) {
-    
+function SwipeableEdgeDrawer({ children, isDrawerOpen, setDrawerOpen, headerText }) {
+
 
     const toggleDrawer = (newOpen) => () => {
         setDrawerOpen(newOpen);
@@ -86,8 +86,8 @@ function SwipeableEdgeDrawer({ children, isDrawerOpen, setDrawerOpen, headerText
                             <p className='text-green-500 h-full mt-5 p-0.5 border-green-500 text-xs'>beta</p>
                         </div>
                         <div className='mt-4 pr-6'>
-                            <div className='rounded border px-2 border-gray-300'>
-                                <WbSunny color='warning' fontSize='' /> <GetTemperature />
+                            <div className='px-2 '>
+                                <WbSunny color='warning' fontSize='' /> <GetTemperature /> &deg;C
                             </div>
                         </div>
                     </div>

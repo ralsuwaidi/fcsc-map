@@ -10,7 +10,6 @@ import cinemaicon from './assets/icons/cinema.png'
 import damsicon from './assets/icons/dams.png'
 import heritagesiteicon from './assets/icons/heritage-site.png'
 import hotelicon from './assets/icons/hotel.png'
-import hotelsicon from './assets/icons/hotels.png'
 import islandicon from './assets/icons/island.png'
 import liberaryicon from './assets/icons/liberary.png'
 import mangroveicon from './assets/icons/mangrove.png'
@@ -64,7 +63,7 @@ const Map = ({ filter, setDrawerOpen, SidebarVisible }) => {
 
     const map = new mapboxgl.Map({
       container: mapContainerRef.current,
-      style: 'mapbox://styles/mapbox/streets-v12',
+      style: 'mapbox://styles/mapbox/navigation-day-v1',
       center: [55, 25.3],
       zoom: 6,
     });
@@ -140,7 +139,7 @@ const Map = ({ filter, setDrawerOpen, SidebarVisible }) => {
 
     // Clean up on unmount
     return () => map.remove();
-  }, [filter]);
+  }, [filter, SidebarVisible, setDrawerOpen]);
 
 
   return (
