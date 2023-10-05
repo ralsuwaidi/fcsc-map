@@ -57,11 +57,8 @@ function DrawerContent() {
                 </Card>
             </div>
 
-            <div>
 
-            </div>
-
-        </div>
+        </div >
     );
 }
 

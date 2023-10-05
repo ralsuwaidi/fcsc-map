@@ -32,7 +32,7 @@ import { Dialog, Transition } from '@headlessui/react';
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_TOKEN
 
 
-const Map = ({ filter, setDrawerOpen, SidebarVisible }) => {
+const Map = ({ filter, setDrawerOpen, setTabNumber }) => {
   const mapContainerRef = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
   const [modalContent, setModalContent] = useState(null);
@@ -126,7 +126,7 @@ const Map = ({ filter, setDrawerOpen, SidebarVisible }) => {
       map.on('click', 'unclustered-point', function (e) {
         // setModalContent(e.features[0]);
         setDrawerOpen(true)
-        SidebarVisible(false)
+        setTabNumber(null)
         // setIsOpen(true);
       });
 
@@ -139,7 +139,7 @@ const Map = ({ filter, setDrawerOpen, SidebarVisible }) => {
 
     // Clean up on unmount
     return () => map.remove();
-  }, [filter, SidebarVisible, setDrawerOpen]);
+  }, [filter, setTabNumber, setDrawerOpen]);
 
 
   return (

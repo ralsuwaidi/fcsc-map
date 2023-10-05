@@ -1,15 +1,12 @@
 import React, { useState } from "react";
 import Map from "./Map";
 import { GetSidebar } from "./components/Tab";
-import { Button } from 'flowbite-react';
-import { BiWorld } from 'react-icons/bi';
-import { BsFillDoorOpenFill } from 'react-icons/bs';
-import { FaMoneyBillAlt } from 'react-icons/fa';
 import DrawerContent from "./components/Drawer/DrawerContent";
 import SwipeableEdgeDrawer from "./SwipableEdgeDrawer";
 import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
 import OnLoadModal from "./components/OnLoadModal";
+import TabButtonGroup from "./components/tabItems/TabButtonGroup";
 const buttonList = [
   {
     category: 'Culture',
@@ -63,16 +60,10 @@ const buttonList = [
 ]
 
 function App() {
-  const [isSidebarVisible, SidebarVisible] = useState(false);
-  const [tabNumber, setTabNumber] = useState(0);
+  const [tabNumber, setTabNumber] = useState(null);
   const [filter, setFilter] = useState(null);
   const [isDrawerOpen, setDrawerOpen] = useState(false);
 
-  const handleButtonClick = (tabNumber) => {
-    SidebarVisible(true);
-    setDrawerOpen(true)
-    setTabNumber(tabNumber);
-  }
 
 
   const handleFilterClick = (items) => {
@@ -87,21 +78,7 @@ function App() {
   return (
     <div className="h-full w-full">
 
-      <Map setDrawerOpen={setDrawerOpen} SidebarVisible={SidebarVisible} filter={filter} />
-
-      {/* add pages on the top left  */}
-      <div className="absolute left-4 top-8 bg-white rounded shadow-lg" >
-        <Button className='bg-white' size={'sm'} onClick={() => handleButtonClick(0)}>
-          <BiWorld className=" text-black h-4 w-4" />
-        </Button>
-        <Button className='bg-white' size={'sm'} onClick={() => handleButtonClick(1)}>
-          <BsFillDoorOpenFill className=" text-black h-4 w-4" />
-        </Button>
-        <Button className='bg-white' size={'sm'} onClick={() => handleButtonClick(2)}>
-          <FaMoneyBillAlt className=" text-black h-4 w-4" />
-        </Button>
-      </div>
-
+      <Map setDrawerOpen={setDrawerOpen} setTabNumber={setTabNumber} filter={filter} />
 
       <OnLoadModal />
 
@@ -133,7 +110,12 @@ function App() {
           </Stack>
         </div>
 
-        {isSidebarVisible ? GetSidebar(tabNumber) : <DrawerContent setTabNumber={setTabNumber} />}
+        {tabNumber != null ? GetSidebar(tabNumber) : <DrawerContent />}
+
+        <div className="mt-4">
+          <TabButtonGroup setTabNumber={setTabNumber} />
+        </div>
+
       </SwipeableEdgeDrawer>
 
     </div>
