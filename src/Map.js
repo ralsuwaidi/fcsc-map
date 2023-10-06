@@ -13,8 +13,7 @@ import hotelicon from './assets/icons/hotel.png'
 import islandicon from './assets/icons/island.png'
 import liberaryicon from './assets/icons/liberary.png'
 import mangroveicon from './assets/icons/mangrove.png'
-import mosqueicon from './assets/icons/mosque.png'
-import mountainicon from './assets/icons/mountain.png'
+import mountainicon from './assets/icons/mountains.png'
 import museumicon from './assets/icons/museum.png'
 import parksicon from './assets/icons/parks.png'
 import performingartsicon from './assets/icons/performing-arts.png'
@@ -78,7 +77,6 @@ const Map = ({ filter, setDrawerOpen, setTabNumber }) => {
       'Islands': islandicon,
       'Library': liberaryicon,
       'Mangrove': mangroveicon,
-      'mosqueicon': mosqueicon,
       'Mountains': mountainicon,
       'Museums': museumicon,
       'Park': parksicon,
