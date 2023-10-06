@@ -6,7 +6,7 @@ import './Map.css';
 
 
 import campsiteicon from './assets/icons/campsite.png'
-import cinemaicon from './assets/icons/cinema.png'
+import cinemaicon from './assets/icons/cinemas.png'
 import damsicon from './assets/icons/dams.png'
 import heritagesiteicon from './assets/icons/heritage-site.png'
 import hotelicon from './assets/icons/hotel.png'
