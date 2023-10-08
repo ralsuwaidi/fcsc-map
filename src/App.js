@@ -7,6 +7,10 @@ import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
 import OnLoadModal from "./components/OnLoadModal";
 import TabButtonGroup from "./components/tabItems/TabButtonGroup";
+import DirectionsBikeIcon from '@mui/icons-material/DirectionsBike';
+import IconButton from '@mui/material/IconButton';
+
+
 const buttonList = [
   {
     category: 'Culture',
@@ -85,9 +89,18 @@ function App() {
 
       <OnLoadModal />
 
-      <button onClick={toggleBikeRoute} className="absolute top-24 right-4">
-        <p className=" bg-white rounded border">dwdw</p>
-      </button>
+
+      <div className="absolute bg-white rounded shadow-lg"
+        style={{
+          top: '88px',
+          right: '9px',
+          maxWidth: '30px',
+          maxHeight: '30px'
+        }}>
+        <IconButton onClick={toggleBikeRoute} aria-label="toggle bike route" style={{ padding: '5px' }}>
+          <DirectionsBikeIcon fontSize="small" color={withBikeRoute ? "primary" : "action"} />
+        </IconButton>
+      </div>
 
       <SwipeableEdgeDrawer
         headerText="1Map"
