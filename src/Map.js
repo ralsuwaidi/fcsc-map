@@ -1,6 +1,7 @@
 import mapboxgl from 'mapbox-gl';
 import React, { Fragment, useEffect, useRef, useState } from 'react';
 import geoJson from './data2.json';
+import bikeGeoJson from './out.json';
 import './Map.css';
 
 
@@ -144,6 +145,20 @@ const Map = ({ filter, setDrawerOpen, setTabNumber }) => {
         (layer) => layer.type === 'symbol' && layer.layout['text-field']
       ).id;
 
+      map.addSource('mapbox-dem', {
+        'type': 'raster-dem',
+        'url': 'mapbox://mapbox.mapbox-terrain-dem-v1',
+        'tileSize': 512,
+        'maxzoom': 14
+      });
+
+      map.addSource("running-routes", {
+        type: "geojson",
+        // a reference to the converted data
+        // could come from a file, API, etc
+        data: bikeGeoJson,
+      });
+
       // The 'building' layer in the Mapbox Streets
       // vector tileset contains building height data
       // from OpenStreetMap.
@@ -186,12 +201,11 @@ const Map = ({ filter, setDrawerOpen, setTabNumber }) => {
       );
 
 
-      map.addSource('mapbox-dem', {
-        'type': 'raster-dem',
-        'url': 'mapbox://mapbox.mapbox-terrain-dem-v1',
-        'tileSize': 512,
-        'maxzoom': 14
-      });
+
+
+
+
+
       // add the DEM source as a terrain layer with exaggerated height
       map.setTerrain({ 'source': 'mapbox-dem', 'exaggeration': 1.5 });
     });

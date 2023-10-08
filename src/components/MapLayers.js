@@ -64,6 +64,16 @@ function AddMapLayers(map) {
     };
 
     map.addLayer({
+        id: "running-routes-line",
+        type: "line",
+        source: "running-routes",
+        paint: {
+            "line-color": "#0000FF",   // Changed color from green to blue
+            "line-width": 4,
+        },
+    })
+
+    map.addLayer({
         id: 'unclustered-point',
         type: 'symbol',
         source: 'chicago-parks',
