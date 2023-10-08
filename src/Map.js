@@ -120,13 +120,8 @@ const Map = ({ filter, setDrawerOpen, setTabNumber }) => {
       AddMapLayers(map)
 
 
-      // Add click event to unclustered layers
-      map.on('click', 'unclustered-point', function (e) {
-        // setModalContent(e.features[0]);
-        setDrawerOpen(true)
-        setTabNumber(null)
-        // setIsOpen(true);
-      });
+
+
 
 
       // Clean up on unmount
@@ -134,6 +129,16 @@ const Map = ({ filter, setDrawerOpen, setTabNumber }) => {
 
     });
 
+    map.addControl(new mapboxgl.FullscreenControl({ container: document.querySelector('body') }));
+
+
+    // Add click event to unclustered layers
+    map.on('click', 'unclustered-point', function (e) {
+      // setModalContent(e.features[0]);
+      setDrawerOpen(true)
+      setTabNumber(null)
+      // setIsOpen(true);
+    });
 
     map.on('style.load', () => {
       // Insert the layer beneath any symbol layer.
