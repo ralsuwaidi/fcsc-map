@@ -25,14 +25,35 @@ import sportsfacilitiesicon from './assets/icons/sports-facilities.png'
 import theatersicon from './assets/icons/theaters.png'
 import valleyicon from './assets/icons/valley.png'
 
-import { AddMapLayers } from './components/MapLayers';
+import { AddLayer, AddMapLayers, RemoveLayer } from './components/MapLayers';
 import { Dialog, Transition } from '@headlessui/react';
 
 
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_TOKEN
 
+const types = {
+  'Campsite': campsiteicon,
+  'Cinema': cinemaicon,
+  'Dams': damsicon,
+  'Heritage sites': heritagesiteicon,
+  'Hotel': hotelicon,
+  'Islands': islandicon,
+  'Library': liberaryicon,
+  'Mangrove': mangroveicon,
+  'Mountains': mountainicon,
+  'Museums': museumicon,
+  'Park': parksicon,
+  'Performing Art': performingartsicon,
+  'Protected Area': protectedareaicon,
+  'Religious Facilities': religiousfacilitiesicon,
+  'Shopping Facilities': shoppingfacilitiesicon,
+  'Sport Facilities': sportsfacilitiesicon,
+  'Theaters': theatersicon,
+  'Valley': valleyicon
+};
 
-const Map = ({ filter, setDrawerOpen, setTabNumber }) => {
+
+const Map = ({ filter, setDrawerOpen, setTabNumber, withBikeRoute }) => {
   const mapContainerRef = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
   const [modalContent, _] = useState(null);
@@ -61,34 +82,17 @@ const Map = ({ filter, setDrawerOpen, setTabNumber }) => {
     });
 
 
+    const fullscreen = new mapboxgl.FullscreenControl({ container: document.querySelector('body') })
+
+
     const map = new mapboxgl.Map({
       container: mapContainerRef.current,
       style: 'mapbox://styles/mapbox/navigation-day-v1',
       center: [55, 25.3],
       zoom: 6,
     });
-    map.addControl(geolocate)
 
-    const types = {
-      'Campsite': campsiteicon,
-      'Cinema': cinemaicon,
-      'Dams': damsicon,
-      'Heritage sites': heritagesiteicon,
-      'Hotel': hotelicon,
-      'Islands': islandicon,
-      'Library': liberaryicon,
-      'Mangrove': mangroveicon,
-      'Mountains': mountainicon,
-      'Museums': museumicon,
-      'Park': parksicon,
-      'Performing Art': performingartsicon,
-      'Protected Area': protectedareaicon,
-      'Religious Facilities': religiousfacilitiesicon,
-      'Shopping Facilities': shoppingfacilitiesicon,
-      'Sport Facilities': sportsfacilitiesicon,
-      'Theaters': theatersicon,
-      'Valley': valleyicon
-    };
+
 
     const loadImages = async () => {
       for (let type in types) {
@@ -120,14 +124,25 @@ const Map = ({ filter, setDrawerOpen, setTabNumber }) => {
       // add all map layers
       AddMapLayers(map)
 
+      map.on('styledata', function () {
+        if (withBikeRoute) {
+          AddLayer(map, 'running-routes-line');
+          RemoveLayer(map, 'clusters');
+          RemoveLayer(map, 'cluster-count');
+          RemoveLayer(map, 'unclustered-point');
 
+        } else if (!withBikeRoute) {
+          RemoveLayer(map, 'running-routes-line');
+          AddLayer(map, 'clusters');
+          AddLayer(map, 'unclustered-point');
+          AddLayer(map, 'cluster-count');
+        }
+      });
 
       // Clean up on unmount
       return () => map.remove();
 
     });
-
-    map.addControl(new mapboxgl.FullscreenControl({ container: document.querySelector('body') }));
 
 
     // Add click event to unclustered layers
@@ -210,10 +225,13 @@ const Map = ({ filter, setDrawerOpen, setTabNumber }) => {
       map.setTerrain({ 'source': 'mapbox-dem', 'exaggeration': 1.5 });
     });
 
+    map.addControl(geolocate);
+
+    map.addControl(fullscreen);
 
     // Clean up on unmount
     return () => map.remove();
-  }, [filter, setTabNumber, setDrawerOpen]);
+  }, [filter, setTabNumber, setDrawerOpen, withBikeRoute]);
 
 
   return (

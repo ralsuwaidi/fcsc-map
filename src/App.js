@@ -63,8 +63,11 @@ function App() {
   const [tabNumber, setTabNumber] = useState(null);
   const [filter, setFilter] = useState(null);
   const [isDrawerOpen, setDrawerOpen] = useState(false);
+  const [withBikeRoute, setWithBikeRoute] = useState(false)
 
-
+  const toggleBikeRoute = () => {
+    setWithBikeRoute(!withBikeRoute)
+  }
 
   const handleFilterClick = (items) => {
     // If a category object is found, set the filter to its items
@@ -78,9 +81,13 @@ function App() {
   return (
     <div className="h-full w-full">
 
-      <Map setDrawerOpen={setDrawerOpen} setTabNumber={setTabNumber} filter={filter} />
+      <Map withBikeRoute={withBikeRoute} setDrawerOpen={setDrawerOpen} setTabNumber={setTabNumber} filter={filter} />
 
       <OnLoadModal />
+
+      <button onClick={toggleBikeRoute} className="absolute top-24 right-4">
+        <p className=" bg-white rounded border">dwdw</p>
+      </button>
 
       <SwipeableEdgeDrawer
         headerText="1Map"

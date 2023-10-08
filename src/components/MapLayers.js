@@ -1,9 +1,31 @@
 
+import bikeGeoJson from '../out.json';
+
+const colorsByType = {
+    'Campsite': '#F7B317',
+    'Cinema': '#EE79AB',
+    'Dams': '#376EB5',
+    'Heritage sites': '#48AD3A',
+    'Hotel': '#917FBA',
+    'Islands': '#6EADC2',
+    'Library': '#5CAF86',
+    'Mangrove': '#D2A84E',
+    'Mountains': '#816B49',
+    'Museums': '#BF5DA0',
+    'Park': '#3B6A3B',
+    'Performing Art': '#8883BE',
+    'Protected Area': '#E63528',
+    'Religious Facilities': '#EE706F',
+    'Shopping Facilities': '#CC7AB1',
+    'Sport Facilities': '#2CADE4',
+    'Theaters': '#88569E',
+    'Valley': '#AF8054',
+};
 
 
-function AddMapLayers(map) {
-    map.addLayer({
-        id: 'clusters',
+
+const mapLayers = {
+    'clusters': {
         type: 'circle',
         source: 'chicago-parks',
         filter: ['has', 'point_count'],
@@ -27,10 +49,8 @@ function AddMapLayers(map) {
                 50
             ]
         }
-    });
-
-    map.addLayer({
-        id: 'cluster-count',
+    },
+    'cluster-count': {
         type: 'symbol',
         source: 'chicago-parks',
         filter: ['has', 'point_count'],
@@ -39,42 +59,17 @@ function AddMapLayers(map) {
             'text-font': ['DIN Offc Pro Medium', 'Arial Unicode MS Bold'],
             'text-size': 12
         }
-    });
-
-
-    const colorsByType = {
-        'Campsite': '#F7B317',
-        'Cinema': '#EE79AB',
-        'Dams': '#376EB5',
-        'Heritage sites': '#48AD3A',
-        'Hotel': '#917FBA',
-        'Islands': '#6EADC2',
-        'Library': '#5CAF86',
-        'Mangrove': '#D2A84E',
-        'Mountains': '#816B49',
-        'Museums': '#BF5DA0',
-        'Park': '#3B6A3B',
-        'Performing Art': '#8883BE',
-        'Protected Area': '#E63528',
-        'Religious Facilities': '#EE706F',
-        'Shopping Facilities': '#CC7AB1',
-        'Sport Facilities': '#2CADE4',
-        'Theaters': '#88569E',
-        'Valley': '#AF8054',
-    };
-
-    map.addLayer({
-        id: "running-routes-line",
+    },
+    'running-routes-line': {
         type: "line",
         source: "running-routes",
         paint: {
             "line-color": "#0000FF",   // Changed color from green to blue
             "line-width": 4,
         },
-    })
+    },
 
-    map.addLayer({
-        id: 'unclustered-point',
+    'unclustered-point': {
         type: 'symbol',
         source: 'chicago-parks',
         filter: ['!', ['has', 'point_count']],
@@ -92,8 +87,45 @@ function AddMapLayers(map) {
             'icon-color': ['get', ['to-string', ['get', 'Type']], ['literal', colorsByType]], // use a data-driven style for 'icon-color'
             'text-color': ['get', ['to-string', ['get', 'Type']], ['literal', colorsByType]]  // use a data-driven style for 'text-color'
         }
-    });
+    }
+}
+
+
+function AddLayer(map, id) {
+    if (mapLayers.hasOwnProperty(id)) {
+        let layer = mapLayers[id];
+        layer.id = id;      // ensure the id property is set
+        map.addLayer(layer);
+    } else {
+        console.error(`Layer configuration with id ${id} does not exist.`);
+    }
+}
+
+function RemoveLayer(map, id) {
+    // Check if the layer exists
+    if (map.getLayer(id)) {
+        // Remove the layer
+        map.removeLayer(id);
+
+        // Also remove the source if it is no longer needed
+        if (map.getSource(id)) {
+            map.removeSource(id);
+        }
+
+        // Refresh the map (Mapbox automatically does this when layers are removed)
+        map.repaint = true;
+    } else {
+        console.error(`Layer with id ${id} does not exist.`);
+    }
+}
+function AddMapLayers(map) {
+
+    for (let id in mapLayers) {
+        let layer = mapLayers[id];
+        layer.id = id;     // ensure the id property is set
+        map.addLayer(layer);
+    };
 
 }
 
-export { AddMapLayers };
+export { AddMapLayers, AddLayer, RemoveLayer };
