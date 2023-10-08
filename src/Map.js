@@ -53,7 +53,7 @@ const types = {
 };
 
 
-const Map = ({ filter, setDrawerOpen, setTabNumber, withBikeRoute }) => {
+const Map = ({ filter, setDrawerOpen, setTabNumber, withBikeRoute, with3D }) => {
   const mapContainerRef = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
   const [modalContent, _] = useState(null);
@@ -82,16 +82,12 @@ const Map = ({ filter, setDrawerOpen, setTabNumber, withBikeRoute }) => {
     });
 
 
-    const fullscreen = new mapboxgl.FullscreenControl({ container: document.querySelector('body') })
-
-
     const map = new mapboxgl.Map({
       container: mapContainerRef.current,
       style: 'mapbox://styles/mapbox/navigation-day-v1',
       center: [55, 25.3],
       zoom: 6,
     });
-
 
 
     const loadImages = async () => {
@@ -116,7 +112,6 @@ const Map = ({ filter, setDrawerOpen, setTabNumber, withBikeRoute }) => {
         clusterRadius: 50,
       });
 
-      geolocate.trigger()
 
       // add data source
       await loadImages();
@@ -138,6 +133,20 @@ const Map = ({ filter, setDrawerOpen, setTabNumber, withBikeRoute }) => {
           AddLayer(map, 'cluster-count');
         }
       });
+
+
+
+      geolocate.on('geolocate', function (e) {
+        map.flyTo({
+          center: [e.coords.longitude, e.coords.latitude],
+          zoom: with3D ? 16 : 15, // adjust this to set the desired zoom level
+          bearing: 0,
+          pitch: with3D ? 60 : 0, // Set pitch to 60 if with3D is true, else 0
+        });
+      });
+
+      geolocate.trigger()
+
 
       // Clean up on unmount
       return () => map.remove();
@@ -216,9 +225,6 @@ const Map = ({ filter, setDrawerOpen, setTabNumber, withBikeRoute }) => {
       );
 
 
-
-      // add the DEM source as a terrain layer with exaggerated height
-      map.setTerrain({ 'source': 'mapbox-dem', 'exaggeration': 1.5 });
     });
 
     map.addControl(geolocate);
@@ -226,7 +232,7 @@ const Map = ({ filter, setDrawerOpen, setTabNumber, withBikeRoute }) => {
 
     // Clean up on unmount
     return () => map.remove();
-  }, [filter, setTabNumber, setDrawerOpen, withBikeRoute]);
+  }, [filter, setTabNumber, setDrawerOpen, withBikeRoute, with3D]);
 
 
   return (

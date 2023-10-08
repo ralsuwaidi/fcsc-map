@@ -9,7 +9,7 @@ import OnLoadModal from "./components/OnLoadModal";
 import TabButtonGroup from "./components/tabItems/TabButtonGroup";
 import DirectionsBikeIcon from '@mui/icons-material/DirectionsBike';
 import IconButton from '@mui/material/IconButton';
-
+import ThreeDRotationIcon from '@mui/icons-material/ThreeDRotation';
 
 const buttonList = [
   {
@@ -68,9 +68,14 @@ function App() {
   const [filter, setFilter] = useState(null);
   const [isDrawerOpen, setDrawerOpen] = useState(false);
   const [withBikeRoute, setWithBikeRoute] = useState(false)
+  const [with3D, setWith3D] = useState(false)
 
   const toggleBikeRoute = () => {
     setWithBikeRoute(!withBikeRoute)
+  }
+
+  const toggle3D = () => {
+    setWith3D(!with3D)
   }
 
   const handleFilterClick = (items) => {
@@ -85,7 +90,7 @@ function App() {
   return (
     <div className="h-full w-full">
 
-      <Map withBikeRoute={withBikeRoute} setDrawerOpen={setDrawerOpen} setTabNumber={setTabNumber} filter={filter} />
+      <Map with3D={with3D} withBikeRoute={withBikeRoute} setDrawerOpen={setDrawerOpen} setTabNumber={setTabNumber} filter={filter} />
 
       <OnLoadModal />
 
@@ -99,6 +104,18 @@ function App() {
         }}>
         <IconButton onClick={toggleBikeRoute} aria-label="toggle bike route" style={{ padding: '5px' }}>
           <DirectionsBikeIcon fontSize="small" color={withBikeRoute ? "primary" : "action"} />
+        </IconButton>
+      </div>
+
+      <div className="absolute bg-white rounded shadow-lg"
+        style={{
+          top: '90px',
+          right: '9px',
+          maxWidth: '30px',
+          maxHeight: '30px'
+        }}>
+        <IconButton onClick={toggle3D} aria-label="toggle bike route" style={{ padding: '5px' }}>
+          <ThreeDRotationIcon fontSize="small" color={with3D ? "primary" : "action"} />
         </IconButton>
       </div>
 
