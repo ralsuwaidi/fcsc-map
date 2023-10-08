@@ -217,17 +217,12 @@ const Map = ({ filter, setDrawerOpen, setTabNumber, withBikeRoute }) => {
 
 
 
-
-
-
-
       // add the DEM source as a terrain layer with exaggerated height
       map.setTerrain({ 'source': 'mapbox-dem', 'exaggeration': 1.5 });
     });
 
     map.addControl(geolocate);
 
-    map.addControl(fullscreen);
 
     // Clean up on unmount
     return () => map.remove();

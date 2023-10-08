@@ -92,7 +92,7 @@ function App() {
 
       <div className="absolute bg-white rounded shadow-lg"
         style={{
-          top: '88px',
+          top: '50px',
           right: '9px',
           maxWidth: '30px',
           maxHeight: '30px'
