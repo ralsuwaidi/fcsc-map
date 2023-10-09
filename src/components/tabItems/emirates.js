@@ -24,7 +24,7 @@ const emiratesList = [
     },
     {
         title: "Ajman",
-        content: "Sharjah is the third largest emirate in the UAE, and it is home to vast deserts, beaches and key archaeological sites that spread across the city. Sharjah was crowned the 'Capital of Islamic Culture' and 'Unique and Distinguished Tourist Destination'. It was also named the ‘Cultural Capital of the Arab world’ by UNESCO. Several places in the emirate overlook the Eastern Coast of the Gulf of Oman",
+        content: "Ajman is situated on the coast of the Arabian Gulf and comprises Manama and Masfout cities, which are surrounded by the captivating Hajar mountain ranges. The emirate boasts many archaeological areas dating back to prehistoric times, as well as several historical archaeological forts. Ajman is known for its diverse natural landscapes of beaches, mountains and valleys",
         image: "https://www.moec.gov.ae/documents/20121/354815/emirate_4.jpg/24231173-9ff3-54bd-0d5f-76aca11fbdcc?t=1630491268916"
 
     },
