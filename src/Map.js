@@ -56,7 +56,7 @@ const types = {
 const Map = ({ filter, setDrawerOpen, setTabNumber, withBikeRoute, with3D }) => {
   const mapContainerRef = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
-  const [modalContent, _] = useState(null);
+  const [modalContent] = useState(null);
 
   const createFilter = (filter) => {
     if (!filter) return null;

@@ -1,5 +1,5 @@
 
-const InvestTab = ({ }) => {
+const InvestTab = () => {
 
 
     return (

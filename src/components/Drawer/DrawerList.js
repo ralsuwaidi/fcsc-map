@@ -1,11 +1,9 @@
 import * as React from 'react';
-import Box from '@mui/joy/Box';
 import Card from '@mui/joy/Card';
 import List from '@mui/joy/List';
 import ListItem from '@mui/joy/ListItem';
 import ListItemDecorator from '@mui/joy/ListItemDecorator';
 import ListItemButton from '@mui/joy/ListItemButton';
-import Typography from '@mui/joy/Typography';
 import {
     Accessible,
     Toys,

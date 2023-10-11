@@ -62,7 +62,13 @@ function SwipeableEdgeDrawer({ children, isDrawerOpen, setDrawerOpen, headerText
                 onOpen={toggleDrawer(true)}
                 swipeAreaWidth={drawerBleeding}
                 disableSwipeToOpen={false}
-                sx={{ "& .MuiDrawer-paper": { height: 'calc(100% - 128px)', top: 128 } }}
+                sx={{
+                    "& .MuiDrawer-paper": {
+                        height: 'calc(100% - 128px)', top: 128,
+                        maxWidth: { md: "600px" }, // Sets max-width for tablet and above
+                        margin: { md: "auto" }, // Centers the drawer for tablet and above
+                    }
+                }}
                 ModalProps={{
                     keepMounted: true,
                 }}

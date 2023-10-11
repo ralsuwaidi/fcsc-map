@@ -49,7 +49,7 @@ const emiratesList = [
 ]
 
 
-const EmiratesTab = ({ }) => {
+const EmiratesTab = () => {
 
 
     return (

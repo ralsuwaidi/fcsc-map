@@ -1,7 +1,5 @@
 'use client';
 
-import { Button } from "flowbite-react";
-import { FaTimes } from 'react-icons/fa';
 import EmiratesTab from "./tabItems/emirates";
 import StatsTab from "./tabItems/stats";
 import InvestTab from "./tabItems/invest";
@@ -12,17 +10,17 @@ export function GetSidebar(tabNumber) {
     switch (tabNumber) {
         case 0:
             return (
-                    <EmiratesTab />
+                <EmiratesTab />
             );
 
         case 1:
             return (
-                    <StatsTab />
+                <StatsTab />
             );
 
         case 2:
             return (
-                    <InvestTab />
+                <InvestTab />
             );
 
         default:

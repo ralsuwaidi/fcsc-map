@@ -1,5 +1,4 @@
 
-import bikeGeoJson from '../out.json';
 
 const colorsByType = {
     'Campsite': '#F7B317',

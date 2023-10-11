@@ -38,7 +38,7 @@ const statList = [
 ]
 
 
-const StatsTab = ({ }) => {
+const StatsTab = () => {
 
 
     return (

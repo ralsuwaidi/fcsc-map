@@ -63,6 +63,10 @@ const buttonList = [
 
 ]
 
+/**
+ * The main component of the application.
+ * @returns {JSX.Element} The App component.
+ */
 function App() {
   const [tabNumber, setTabNumber] = useState(null);
   const [filter, setFilter] = useState(null);
@@ -70,16 +74,26 @@ function App() {
   const [withBikeRoute, setWithBikeRoute] = useState(false)
   const [with3D, setWith3D] = useState(false)
 
+  /**
+   * Toggles the bike route display on the map.
+   */
   const toggleBikeRoute = () => {
     setWithBikeRoute(!withBikeRoute)
   }
 
+  /**
+   * Toggles the 3D display on the map.
+   */
   const toggle3D = () => {
     setWith3D(!with3D)
   }
 
+  /**
+   * Handles the click event on a filter button.
+   * If a category object is found, set the filter to its items.
+   * @param {Array} items - The items to filter.
+   */
   const handleFilterClick = (items) => {
-    // If a category object is found, set the filter to its items
     if (items !== filter) {
       setFilter(items);
     } else {
